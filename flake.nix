@@ -16,11 +16,12 @@
       config = { allowUnfree = true; };
     };
   in {
-    homeManagerConfigurations = {
+    homeConfigurations = {
       luko = home-manager.lib.homeManagerConfiguration {
         inherit system pkgs;
         username = "luko";
         homeDirectory = "/home/luko";
+        stateVersion = "21.11";
         configuration = {
           imports = [ ./home.nix ];
         };
@@ -29,7 +30,7 @@
 
     nixosConfigurations = {
       nixvm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         modules = [ ./configuration.nix ];
       };
     };
