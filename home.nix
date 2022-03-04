@@ -13,8 +13,30 @@
     EDITOR = "vim";
   };
 
+  # Install home packages
+  home.packages = with pkgs; [
+    spotify
+    thunderbird
+    libreoffice
+    discord
+    vlc
+
+    gimp
+    inkscape
+    openscad
+    super-slicer
+
+    coq
+    zotero
+    jetbrains.pycharm-professional
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.fish = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
