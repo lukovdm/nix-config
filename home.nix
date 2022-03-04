@@ -28,5 +28,9 @@
 
   programs.vscode = {
     enable = true;
-  };  
+  };
+
+  programs.htop = {
+    enable = true;
+  }; 
 }

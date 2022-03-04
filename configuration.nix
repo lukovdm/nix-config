@@ -28,21 +28,20 @@
 
   networking.interfaces.enp0s3.useDHCP = true;
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
+  services.xserver = {
+    enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+    desktopManager = {
+      gnome = {
+        enable = true;
+      };
+    };
 
-
-  # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  
+    displayManager = {
+      gdm.enable = true;
+      defaultSession = "gnome";
+    };
+ };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -51,14 +50,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  # Enable audio
+  hardware.pulseaudio.enable = true;
 
   # Define a user account. 
   users.users.luko = {
