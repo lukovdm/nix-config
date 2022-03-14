@@ -26,20 +26,19 @@
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
-  networking.interfaces.enp0s3.useDHCP = true;
+  networking.interfaces.enp0s31f6.useDHCP = true;
 
   services.xserver = {
     enable = true;
 
     desktopManager = {
-      gnome = {
+      plasma5 = {
         enable = true;
       };
     };
 
     displayManager = {
-      gdm.enable = true;
-      defaultSession = "gnome";
+      sdd.enable = true;
     };
  };
 
@@ -56,7 +55,6 @@
   # Define a user account. 
   users.users.luko = {
     isNormalUser = true;
-    initialPassword = "password";
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
@@ -65,6 +63,7 @@
     vim 
     wget
     git
+    firefox
   ];
 
   # List services

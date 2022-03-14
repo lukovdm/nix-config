@@ -31,7 +31,11 @@
     nixosConfigurations = {
       nixvm = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix ./hardware-configuration-krypton.nix ];
+      };
+      krypton = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ ./configuration.nix ./hardware-configuration-krypton.nix ];
       };
     };
   };
