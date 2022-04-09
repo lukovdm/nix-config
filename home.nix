@@ -20,6 +20,7 @@
     libreoffice
     discord
     vlc
+    _1password-gui
 
     gimp
     inkscape
@@ -29,6 +30,10 @@
     coq
     zotero
     jetbrains.pycharm-professional
+    jetbrains.webstorm
+    nodePackages.npm
+    nodejs
+    postman
   ];
 
   # Let Home Manager install and manage itself.
@@ -41,7 +46,7 @@
   programs.git = {
     enable = true;
     userName = "Luko van der Maas";
-    userEmail = "nixvm@luko.dev";
+    userEmail = "me@luko.dev";
   };
 
   programs.firefox = {

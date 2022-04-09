@@ -5,11 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration-vm.nix
-    ];
-
   nix = {
     package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
     extraOptions = ''
@@ -17,11 +12,13 @@
     '';
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
  
-  networking.hostName = "nixvm"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "krypton"; # Define your hostname.
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -30,6 +27,7 @@
 
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
 
     desktopManager = {
       plasma5 = {
@@ -38,19 +36,22 @@
     };
 
     displayManager = {
-      sdd.enable = true;
+      sddm.enable = true;
     };
- };
+  };
 
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+  hardware.opengl.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable audio
-  hardware.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   # Define a user account. 
   users.users.luko = {
@@ -64,16 +65,15 @@
     wget
     git
     firefox
+    libsForQt5.kdeconnect-kde
   ];
 
   # List services
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # Firewall
+  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
   system.stateVersion = "21.11";
 
