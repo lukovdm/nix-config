@@ -24,4 +24,11 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  networking.hostName = "krypton"; # Define your hostname.
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.interfaces.enp0s31f6.useDHCP = true;
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 }

@@ -5,8 +5,9 @@
 { config, pkgs, ... }:
 
 {
+  # Enable flakes
   nix = {
-    package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
+    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -16,18 +17,13 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
- 
-  networking.hostName = "krypton"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
-  networking.interfaces.enp0s31f6.useDHCP = true;
-
+  # Display manager
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
 
     desktopManager = {
       plasma5 = {
@@ -41,8 +37,6 @@
   };
 
   hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-
 
   # Enable audio
   security.rtkit.enable = true;
@@ -75,6 +69,7 @@
   networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
   networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
+  # System version, do not update here!
   system.stateVersion = "21.11";
 
 }
