@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.loader.systemd-boot.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/62a50aa5-9a95-43e9-9d19-2dc4531a3fb1";

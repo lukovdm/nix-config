@@ -22,7 +22,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4906-A8B2";
+    { device = "/dev/disk/by-uuid/C7BE-45C3";
       fsType = "vfat";
     };
 
@@ -30,9 +30,27 @@
     [ { device = "/dev/disk/by-uuid/1ecb9365-6cc6-4c9a-94df-35889a7547b4"; }
     ];
 
+  boot.initrd.luks.devices = {
+    luksroot = {
+      device = "/dev/disk/by-uuid/9d455e69-da5a-41e2-81f7-0db1c4b741b2";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "nodev";
+    efiSupport = true;
+    enableCryptodisk = true;
+  };
+  boot.loader.efi.efiSysMountPoint = "/boot/EFI";
+
   networking.hostName = "barium"; # Define your hostname.
   networking.useDHCP = lib.mkDefault false;
   networking.interfaces.wlp170s0.useDHCP = lib.mkDefault true;
+  networking.networkmanager.enable = true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
