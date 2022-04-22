@@ -37,6 +37,10 @@
         inherit system;
         modules = [ ./configuration.nix ./hardware-configuration-krypton.nix ];
       };
+      barium = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ ./configuration.nix ./hardware-configuration-barium.nix ];
+      };
     };
   };
 }
