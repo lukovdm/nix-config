@@ -59,6 +59,7 @@
     git
     firefox
     libsForQt5.kdeconnect-kde
+    libsForQt5.krunner
   ];
 
   # List services
