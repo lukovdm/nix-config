@@ -60,4 +60,5 @@
 
   services.fprintd.enable = true;
   services.xserver.libinput.enable = true;
+  hardware.bluetooth.enable = true;
 }
