@@ -60,6 +60,7 @@
     firefox
     libsForQt5.kdeconnect-kde
     libsForQt5.krunner
+    libsForQt5.sddm-kcm
   ];
 
   # List services
