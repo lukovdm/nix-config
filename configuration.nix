@@ -61,6 +61,7 @@
     libsForQt5.kdeconnect-kde
     libsForQt5.krunner
     libsForQt5.sddm-kcm
+    libsForQt5.ark
   ];
 
   # List services
