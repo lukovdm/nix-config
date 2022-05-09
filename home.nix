@@ -35,6 +35,7 @@
     nodejs
     postman
     zoom-us
+    slack
 
     libsForQt5.kate
   ];
