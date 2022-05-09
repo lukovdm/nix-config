@@ -34,6 +34,7 @@
     nodePackages.npm
     nodejs
     postman
+    zoom-us
   ];
 
   # Let Home Manager install and manage itself.
