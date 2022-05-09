@@ -35,6 +35,8 @@
     nodejs
     postman
     zoom-us
+
+    libsForQt5.kate
   ];
 
   # Let Home Manager install and manage itself.
