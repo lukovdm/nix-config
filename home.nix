@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
-
+let tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-medium
+      ;
+  });
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -21,6 +25,8 @@
     discord
     vlc
     _1password-gui
+    zoom-us
+    slack
 
     gimp
     inkscape
@@ -34,8 +40,7 @@
     nodePackages.npm
     nodejs
     postman
-    zoom-us
-    slack
+    tex
 
     libsForQt5.kate
   ];
