@@ -12,9 +12,17 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=dell-headset-multi
+  '';
   
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "5.16") (lib.mkDefault pkgs.linuxPackages_latest);
+  boot.kernelParams = [ "mem_sleep_default=deep" "nvme.noacpi=1" ];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/bbd0cdc3-5483-4fc4-9bd2-8fb0160ae951";
@@ -46,6 +54,8 @@
     enableCryptodisk = true;
   };
   boot.loader.efi.efiSysMountPoint = "/boot/EFI";
+
+  hardware.acpilight.enable = lib.mkDefault true;
 
   networking.hostName = "barium"; # Define your hostname.
   networking.useDHCP = false;

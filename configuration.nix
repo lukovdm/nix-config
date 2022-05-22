@@ -75,7 +75,7 @@
   services.openssh.enable = true;
 
   # Firewall
-  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 8080; to = 8081; } ];
   networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
   # System version, do not update here!
