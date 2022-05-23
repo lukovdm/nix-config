@@ -63,6 +63,7 @@
     libsForQt5.krunner
     libsForQt5.sddm-kcm
     libsForQt5.ark
+    libsForQt5.plasma-browser-integration
 
     openvpn
   ];

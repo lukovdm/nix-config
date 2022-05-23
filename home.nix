@@ -37,6 +37,7 @@ in
     zotero
     jetbrains.pycharm-professional
     jetbrains.webstorm
+    jetbrains.clion
     nodePackages.npm
     nodejs
     postman
