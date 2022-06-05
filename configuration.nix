@@ -50,6 +50,7 @@
   users.users.luko = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
   };
 
   # Installed system packages
