@@ -92,6 +92,7 @@ in
       g = "git";
     };
   };
+  programs.zoxide.enable = true;
 
   programs.git = {
     enable = true;
