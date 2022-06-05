@@ -82,7 +82,7 @@
   networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
   # System version, do not update here!
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.05";
 
 }
 
