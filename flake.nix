@@ -21,7 +21,7 @@
         inherit system pkgs;
         username = "luko";
         homeDirectory = "/home/luko";
-        stateVersion = "21.11";
+        stateVersion = "22.05";
         configuration = {
           imports = [ ./home.nix ];
         };
