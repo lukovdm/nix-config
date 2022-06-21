@@ -84,6 +84,8 @@
   networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 8080; to = 8081; } ];
   networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
 
+  networking.firewall.checkReversePath = "loose";
+
   # System version, do not update here!
   system.stateVersion = "22.05";
 
