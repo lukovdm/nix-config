@@ -74,8 +74,11 @@
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ gutenprint gutenprintBin ];
 
-  # List services
+  # SSHd
   services.openssh.enable = true;
+
+  # Tailscale
+  services.tailscale.enable = true;
 
   # Firewall
   networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 8080; to = 8081; } ];
