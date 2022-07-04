@@ -32,6 +32,7 @@ in
     inkscape
     openscad
     super-slicer
+    audacity
 
     coq
     zotero
