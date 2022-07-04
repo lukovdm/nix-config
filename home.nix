@@ -44,6 +44,7 @@ in
     tex
 
     libsForQt5.kate
+    libsForQt5.kdenlive
 
     fishPlugins.pisces
     fzf

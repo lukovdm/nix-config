@@ -86,6 +86,10 @@
 
   networking.firewall.checkReversePath = "loose";
 
+  networking.nameservers = [ "100.100.100.100" "8.8.8.8" "1.1.1.1" ];
+  networking.search = [ "lukovdm.github.beta.tailscale.net" ];
+
+
   # System version, do not update here!
   system.stateVersion = "22.05";
 
