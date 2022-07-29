@@ -72,7 +72,7 @@
 
   # Printing
   services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ gutenprint gutenprintBin ];
+  services.printing.drivers = with pkgs; [ gutenprint gutenprintBin hplip hplipWithPlugin ];
 
   # SSHd
   services.openssh.enable = true;
