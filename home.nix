@@ -5,6 +5,14 @@ let tex = (pkgs.texlive.combine {
   });
 in
 {
+  nixpkgs.overlays = [ 
+    (self: super: {
+      slack = super.slack.override {
+        nss = super.nss_latest;
+      };
+    }) 
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "luko";
