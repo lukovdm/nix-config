@@ -10,6 +10,9 @@ in
       slack = super.slack.override {
         nss = super.nss_latest;
       };
+      jetbrains.pycharm-professional = super.jetbrains.pycharm-professional.override {
+        nss = super.nss_latest;
+      };
     }) 
   ];
 
