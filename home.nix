@@ -38,6 +38,7 @@ in
     _1password-gui
     zoom-us
     slack
+    mattermost
 
     gimp
     inkscape
