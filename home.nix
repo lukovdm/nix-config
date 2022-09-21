@@ -36,7 +36,6 @@ in
     zoom-us
     slack
     mattermost-desktop
-    keepass
 
     gimp
     inkscape

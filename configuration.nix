@@ -59,6 +59,7 @@
     wget
     git
     firefox
+    xorg.xkill
     
     libsForQt5.kdeconnect-kde
     libsForQt5.krunner
