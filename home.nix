@@ -36,6 +36,7 @@ in
     zoom-us
     slack
     mattermost-desktop
+    steam
 
     gimp
     inkscape
