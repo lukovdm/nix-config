@@ -78,6 +78,12 @@
   # SSHd
   services.openssh.enable = true;
 
+  # SSH config
+  programs.ssh.extraConfig = ''
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+  '';
+
   # Tailscale
   services.tailscale.enable = true;
 
