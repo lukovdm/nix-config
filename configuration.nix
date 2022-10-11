@@ -72,8 +72,19 @@
   ];
 
   # Printing
-  services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ gutenprint gutenprintBin hplip hplipWithPlugin ];
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint gutenprintBin hplip hplipWithPlugin ];
+    browsedConf = ''
+      BrowseRemoteProtocols none
+      BrowseLocalProtocols none
+      BrowseProtocols none
+      BrowseDeny All
+      BrowseInterval 100
+      BrowseTimeout 300
+      BrowsePoll nautilus.cosy.sbg.ac.at:443
+    '';
+  };
   services.avahi.enable = true;
   # Important to resolve .local domains of printers, otherwise you get an error
   # like  "Impossible to connect to XXX.local: Name or service not known"
