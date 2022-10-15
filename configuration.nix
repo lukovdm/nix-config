@@ -49,7 +49,7 @@
   # Define a user account. 
   users.users.luko = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
   };
 
@@ -104,6 +104,8 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+
+  virtualisation.docker.enable = true;
 
   # Tailscale
   services.tailscale.enable = true;
