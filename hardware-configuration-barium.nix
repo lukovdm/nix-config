@@ -61,7 +61,7 @@
   networking.useDHCP = false;
   networking.interfaces.wlp170s0.useDHCP = true;
   networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = false;
+  networking.networkmanager.unmanaged = [ "tailscale0" "docker0" ]
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
