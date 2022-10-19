@@ -61,8 +61,8 @@
   networking.useDHCP = false;
   networking.interfaces.wlp170s0.useDHCP = true;
   networking.networkmanager.enable = true;
-  systemd.network.wait-online.enable = false;
-
+  systemd.services.NetworkManager-wait-online.enable = false;
+  
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   
