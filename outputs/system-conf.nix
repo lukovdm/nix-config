@@ -1,29 +1,29 @@
 { inputs, system, ... }:
 {
-  nixvm = inputs.nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = { inherit inputs; };
-    modules = [ 
-      ../system/configuration.nix 
-      ../system/hardware-configuration/vm.nix 
-    ];
-  };
-
-  krypton = inputs.nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = { inherit inputs; };
-    modules = [ 
-      ../system/configuration.nix 
-      ../system/hardware-configuration/krypton.nix
-    ];
-  };
-
   barium = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs; };
+    # specialArgs = { inherit inputs; };
     modules = [ 
       ../system/configuration.nix 
-      ../system/hardware-configuration/barium.nix
+      ../system/hardware-configurations/barium.nix
     ];
   };
+
+  # nixvm = inputs.nixpkgs.lib.nixosSystem {
+  #   inherit system;
+  #   specialArgs = { inherit inputs; };
+  #   modules = [ 
+  #     ../system/configuration.nix 
+  #     ../system/hardware-configurations/vm.nix 
+  #   ];
+  # };
+
+  # krypton = inputs.nixpkgs.lib.nixosSystem {
+  #   inherit system;
+  #   specialArgs = { inherit inputs; };
+  #   modules = [ 
+  #     ../system/configuration.nix 
+  #     ../system/hardware-configurations/krypton.nix
+  #   ];
+  # };
 }

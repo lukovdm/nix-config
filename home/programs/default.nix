@@ -1,6 +1,10 @@
 {config, ...}:
 {
-  fzf = {
+  imports = [
+    ./fish
+  ];
+
+  programs.fzf = {
     enable = true;
     enableFishIntegration = true;
   };
@@ -22,8 +26,4 @@
   programs.htop = {
     enable = true;
   };
-
-  imports = [
-    import ./fish
-  ]
 }

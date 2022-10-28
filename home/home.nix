@@ -6,6 +6,10 @@ let
   });
 in
 {
+  imports = [
+    ./programs
+  ];
+  
   home = {
     username = "luko";
     homeDirectory = "/home/luko";
@@ -60,10 +64,6 @@ in
       prettyping
     ];
   };
-
-  imports = [
-    import ./programs
-  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

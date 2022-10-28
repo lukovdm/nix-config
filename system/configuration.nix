@@ -11,6 +11,10 @@ let
   };
 in
   {
+    imports = [
+      ./modules/networking.nix
+    ];
+
     # Enable flakes
     nix = {
       # Flakes settings
@@ -133,11 +137,6 @@ in
 
     # Enable docker
     virtualisation.docker.enable = true;
-
-    imports = [
-      import ./modules/network.nix
-    ];
-
 
     # System version, do not update here!
     system.stateVersion = "22.05";
