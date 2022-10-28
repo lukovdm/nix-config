@@ -13,19 +13,19 @@
   };
 
   outputs = inputs: 
-  let
-    system = "x86_64-linux";
-  in {
-    homeConfigurations = (
-      import ./outputs/home-conf.nix {
-        inherit inputs system;
-      }
-    );
+    let
+      system = "x86_64-linux";
+    in {
+      homeConfigurations = (
+        import ./outputs/home-conf.nix {
+          inherit inputs system;
+        }
+      );
 
-    nixosConfigurations = (
-      import ./outputs/system-conf.nix {
-        inherit inputs system;
-      }
-    );
-  };
+      nixosConfigurations = (
+        import ./outputs/system-conf.nix {
+          inherit inputs system;
+        }
+      );
+    };
 }

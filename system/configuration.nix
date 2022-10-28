@@ -27,14 +27,14 @@ in
         # Avoid unwanted garbage collection when using nix-direnv
         keep-outputs = true;
         keep-derivations = true;
-      }
+      };
     };
 
     nixpkgs.config.allowUnfree = true;
 
     boot.loader.efi.canTouchEfiVariables = true;
 
-    # Set your time zone.
+    # Set your time zone and locale.
     time.timeZone = "Europe/Amsterdam";
     i18n.defaultLocale = "en_NL.UTF-8";
 
