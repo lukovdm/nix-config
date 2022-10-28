@@ -27,11 +27,5 @@
         inherit inputs system;
       }
     );
-
-    nixosConfigurations = (
-      import ./outputs/nixos-conf.nix {
-        inherit inputs system;
-      }
-    );
   };
 }
