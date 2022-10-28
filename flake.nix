@@ -23,7 +23,7 @@
     );
 
     nixosConfigurations = (
-      import ./outputs/nixos-conf.nix {
+      import ./outputs/system-conf.nix {
         inherit inputs system;
       }
     );
