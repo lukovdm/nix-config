@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "fish-bobthefish-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640180970,
+        "narHash": "sha256-9uuM5fwWl98uDrTHet4MdVpRZYLIQfW0HOfTxGb2o5o=",
+        "owner": "gvolpe",
+        "repo": "theme-bobthefish",
+        "rev": "e4418e8a7de9fbd6b5053a9b9009aa84a48398cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gvolpe",
+        "repo": "theme-bobthefish",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +54,7 @@
     },
     "root": {
       "inputs": {
+        "fish-bobthefish-theme": "fish-bobthefish-theme",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
