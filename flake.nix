@@ -5,42 +5,33 @@
     nixpkgs.url = "nixpkgs/nixos-22.05";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    fish-bobthefish-theme = {
+      url = github:gvolpe/theme-bobthefish;
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: 
+  outputs = inputs: 
   let
     system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
   in {
-    homeConfigurations = {
-      luko = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "luko";
-        homeDirectory = "/home/luko";
-        stateVersion = "21.11";
-        configuration = {
-          imports = [ ./home.nix ];
-        };
-      };
-    };
+    homeConfigurations = (
+      import ./outputs/home-conf.nix {
+        inherit inputs system;
+      }
+    );
 
-    nixosConfigurations = {
-      nixvm = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [ ./configuration.nix ./hardware-configuration-vm.nix ];
-      };
-      krypton = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [ ./configuration.nix ./hardware-configuration-krypton.nix ];
-      };
-      barium = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [ ./configuration.nix ./hardware-configuration-barium.nix ];
-      };
-    };
+    nixosConfigurations = (
+      import ./outputs/nixos-conf.nix {
+        inherit inputs system;
+      }
+    );
+
+    nixosConfigurations = (
+      import ./outputs/nixos-conf.nix {
+        inherit inputs system;
+      }
+    );
   };
 }
