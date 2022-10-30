@@ -65,7 +65,7 @@ in
       g = "git";
       ls = "exa";
       ping = "prettyping";
-      nd = "nix develop --command fish"
+      nd = "nix develop --command fish";
     };
 
     interactiveShellInit = ''
