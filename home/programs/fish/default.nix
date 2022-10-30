@@ -8,7 +8,7 @@ let
   themeConfig = ''
     set -g theme_display_date yes
     set -g theme_display_git_master_branch yes
-    set -g theme_nerd_fonts yes
+    set -g theme_nerd_fonts no
     set -g theme_newline_cursor yes
     set -g theme_color_scheme base64
     set -g theme_display_virtualenv yes
