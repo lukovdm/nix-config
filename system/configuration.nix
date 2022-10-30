@@ -126,7 +126,7 @@
 
   programs.programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "luko" ]
+    polkitPolicyOwners = [ "luko" ];
   }
 
   # Add fonts
@@ -138,7 +138,9 @@
       };
 
     fonts = with pkgs; [
-      nerdfonts noto-fonts hack-font
+      nerdfonts 
+      noto-fonts 
+      hack-font
       font-awesome
     ];
   };
