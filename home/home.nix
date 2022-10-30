@@ -25,7 +25,6 @@ in
     packages = with pkgs; [
       spotify
       vlc
-      _1password-gui
 
       # Socials
       zoom-us
@@ -64,8 +63,6 @@ in
       prettyping
     ];
   };
-
-  fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
