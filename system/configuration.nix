@@ -127,7 +127,7 @@
   programs.programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "luko" ];
-  }
+  };
 
   # Add fonts
   fonts = pkgs.lib.mkForce {
