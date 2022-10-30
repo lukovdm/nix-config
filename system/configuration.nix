@@ -42,6 +42,7 @@
     desktopManager = {
       plasma5 = {
         enable = true;
+        useQtScaling = true;
       };
     };
 
@@ -123,15 +124,23 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  programs.programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "luko" ]
+  }
+
   # Add fonts
-  fonts = {
-    enableDefaultFonts = true;
+  fonts = pkgs.lib.mkForce {
+    fontconfig.defaultFonts = {
+        monospace = [ "Fira Code Nerd Font" "Noto Sans Mono" ];
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+      };
 
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      nerdfonts noto-fonts hack-font
       font-awesome
     ];
-
   };
 
   # Enable docker
