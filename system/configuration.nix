@@ -124,7 +124,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  programs.programs._1password-gui = {
+  programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "luko" ];
   };
