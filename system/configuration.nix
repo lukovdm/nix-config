@@ -130,15 +130,7 @@
   };
 
   # Add fonts
-  fonts = pkgs.lib.mkForce {
-    fontDir.enable = true;
-
-    fontconfig.defaultFonts = {
-        monospace = [ "FiraCode Nerd Font" "Noto Sans Mono" ];
-        sansSerif = [ "Noto Sans" ];
-        serif = [ "Noto Serif" ];
-      };
-
+  fonts = {
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "SourceCodePro" "Hack" ]; })
       noto-fonts
