@@ -71,6 +71,7 @@ in
     interactiveShellInit = ''
       eval (direnv hook fish)
       any-nix-shell fish --info-right | source
+      fenv source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" > /dev/null
     '';
 
     shellInit = fishConfig;

@@ -19,7 +19,6 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
-      LOCALE_ARCHIVE = "/run/current-system/sw/lib/locale/locale-archive";
     };
 
     # Install home packages
@@ -58,6 +57,7 @@ in
 
       # Terminal stuff
       fishPlugins.pisces
+      fishPlugins.foreign-env
       any-nix-shell
       fzf
       exa
