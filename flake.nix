@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable"; 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -15,10 +16,16 @@
   outputs = inputs: 
     let
       system = "x86_64-linux";
+      overlay-unstable = final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
     in {
       homeConfigurations = (
         import ./outputs/home-conf.nix {
-          inherit inputs system;
+          inherit inputs system overlay-unstable;
         }
       );
 

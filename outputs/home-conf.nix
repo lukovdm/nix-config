@@ -1,4 +1,4 @@
-{ inputs, system, ... }:
+{ inputs, system, overlay-unstable, ... }:
 
 with inputs;
 let 
@@ -12,6 +12,7 @@ let
     config.allowUnfree = true;
 
     overlays = [
+      overlay-unstable
       fishOverlay
     ];
   };

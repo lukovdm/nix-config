@@ -43,7 +43,7 @@ in
 
       # Programming stuff
       coq
-      zotero
+      unstable.zotero
       jetbrains.pycharm-professional
       jetbrains.webstorm
       jetbrains.clion
