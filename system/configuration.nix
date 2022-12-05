@@ -126,7 +126,6 @@
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "luko" ];
-    gid = 5000;
   };
 
   # Add fonts
