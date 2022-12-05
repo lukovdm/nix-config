@@ -19,13 +19,10 @@ let
 
   mkHome = (
     home-manager.lib.homeManagerConfiguration rec {
-      inherit system pkgs;
-      username = "luko";
-      homeDirectory = "/home/luko";
-      stateVersion = "21.11";
-      configuration = {
-        imports = [ ../home/home.nix ];
-      };
+      inherit pkgs;
+      modules = [
+        ../home/home.nix
+        ];
     }
   );
 in 
