@@ -1,6 +1,6 @@
 {config, ...}:
 {
   imports = [
-    ./gpg-agent
+    ./gpg-agent.nix
   ];
 }
