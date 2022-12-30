@@ -75,8 +75,10 @@
     vim 
     wget
     git
+    git-crypt
     firefox
     xorg.xkill
+    dig
     
     libsForQt5.kdeconnect-kde
     libsForQt5.krunner
