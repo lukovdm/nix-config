@@ -3,6 +3,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "qt";
   };
 }
