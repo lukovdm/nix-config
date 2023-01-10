@@ -31,9 +31,4 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
-  programs.gpg = {
-    enable = true;
-    homedir = "${config.home.homeDirectory}/.gnupg";
-  };
 }

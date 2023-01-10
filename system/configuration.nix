@@ -88,6 +88,10 @@
     kde-gtk-config
 
     openvpn
+
+    pinentry
+    pinentry-qt
+    gnupg
   ];
 
   # Printing
@@ -129,6 +133,13 @@
     enable = true;
     polkitPolicyOwners = [ "luko" ];
   };
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "qt";
+  };
+  services.pcscd.enable = true;
 
   # Add fonts
   fonts = {
