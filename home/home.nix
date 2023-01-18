@@ -63,9 +63,6 @@ in
       fzf
       exa
       prettyping
-
-      # GPG
-      pinentry-qt
     ];
   };
 
