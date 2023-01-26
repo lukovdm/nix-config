@@ -26,6 +26,7 @@ in
     packages = with pkgs; [
       spotify
       vlc
+      calibre
 
       # Socials
       zoom-us
