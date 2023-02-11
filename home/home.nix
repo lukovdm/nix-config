@@ -51,8 +51,7 @@ in
       jetbrains.clion
       nodePackages.npm
       nodejs
-      tex
-      rustup
+      texlive
 
       # KDE stuff
       libsForQt5.kate
