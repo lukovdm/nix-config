@@ -52,6 +52,7 @@ in
       nodePackages.npm
       nodejs
       tex
+      rustup
 
       # KDE stuff
       libsForQt5.kate
