@@ -51,7 +51,7 @@ in
       jetbrains.clion
       nodePackages.npm
       nodejs
-      texlive
+      tex
 
       # KDE stuff
       libsForQt5.kate
