@@ -4,8 +4,8 @@
   services.tailscale.enable = true;
 
   # Firewall
-  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 8000; to = 8443; } ];
-  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 8000; to = 8443; } { from = 27015; to = 27036; } ];
+  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } { from = 27015; to = 27036; } { from = 10999; to = 10999; } ];
   networking.firewall.allowedTCPPorts = [ 8010 ]; # vlc chromecast
 
   networking.firewall.checkReversePath = "loose";
