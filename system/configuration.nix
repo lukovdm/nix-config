@@ -30,7 +30,7 @@
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl = { "kernel.sysrq" = 1 }
+  boot.kernel.sysctl = { "kernel.sysrq" = 1; }
 
   # Set your time zone and locale.
   time.timeZone = "Europe/Amsterdam";
