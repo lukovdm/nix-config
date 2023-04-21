@@ -46,9 +46,9 @@ in
       # Programming stuff
       coq
       unstable.zotero
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
-      jetbrains.clion
+      unstable.jetbrains.pycharm-professional
+      unstable.jetbrains.webstorm
+      unstable.jetbrains.clion
       nodePackages.npm
       nodejs
       tex
