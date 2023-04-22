@@ -66,7 +66,7 @@
   # Define a user account. 
   users.users.luko = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "networkmanager" "jellyfin" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
   };
 
@@ -74,14 +74,14 @@
 
   # Installed system packages
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     git
     git-crypt
     firefox
     xorg.xkill
     dig
-    
+
     libsForQt5.kdeconnect-kde
     libsForQt5.krunner
     libsForQt5.sddm-kcm
