@@ -6,6 +6,7 @@
 {
   imports = [
     ./modules/networking.nix
+    ./modules/jellyfin.nix
   ];
 
   # Enable flakes
@@ -89,6 +90,7 @@
     kde-gtk-config
 
     openvpn
+    nixpkgs-fmt
 
     pinentry
     pinentry-qt
