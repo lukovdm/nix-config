@@ -36,8 +36,6 @@
     pulse.enable = true;
   };
 
-  programs.fish.enable = true;
-
   # Installed system packages
   environment.systemPackages = with pkgs; [
     firefox

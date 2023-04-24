@@ -52,6 +52,8 @@
     gnupg
   ];
 
+  programs.fish.enable = true;
+
   # SSHd
   services.openssh.enable = true;
 
