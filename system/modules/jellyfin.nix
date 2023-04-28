@@ -4,5 +4,7 @@
     {
       enable = true;
       openFirewall = true;
-    };
-}
+      user = "luko";
+      group = "users"
+        };
+    }

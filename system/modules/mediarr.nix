@@ -7,14 +7,17 @@
   services.radarr = {
     enable = true;
     group = "media";
+    openFirewall = true;
   };
   services.sonarr = {
     enable = true;
     group = "media";
+    openFirewall = true;
   };
   services.jellyfin = {
     enable = true;
     group = "media";
+    openFirewall = true;
   };
   services.prowlarr = {
     enable = true;
