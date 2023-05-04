@@ -25,10 +25,10 @@
   services.transmission = {
     enable = true;
     group = "media";
-    home = "/media/Torrents";
     settings = {
       blocklist-enabled = true;
       blocklist-url = "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz";
+      download-dir = "/media/Torrents";
       encryption = 1;
       message-level = 1;
       peer-port = 50778;
