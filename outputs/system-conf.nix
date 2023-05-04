@@ -26,4 +26,14 @@
       ../system/hardware-configurations/krypton.nix
     ];
   };
+
+  xenon = inputs.nixpkgs.lib.nixosSystem
+    {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ../system/server-configuration.nix
+        ../system/hardware-configurations/xenon.nix
+      ];
+    };
 }
