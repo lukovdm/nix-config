@@ -25,6 +25,8 @@
   services.transmission = {
     enable = true;
     group = "media";
+    openFirewall = true;
+    openRPCPort = true;
     settings = {
       blocklist-enabled = true;
       blocklist-url = "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz";
