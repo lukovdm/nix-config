@@ -22,6 +22,7 @@
   services.prowlarr = {
     enable = true;
   };
+  networking.firewall.allowedTCPPorts = [ 9696 ];
   services.transmission = {
     enable = true;
     group = "media";
