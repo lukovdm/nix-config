@@ -1,7 +1,7 @@
 { config, ... }:
 {
   users.groups.media = {
-    members = [ "radarr" "radarr" "sonarr" "transmission" "jellyfin" ];
+    members = [ "radarr" "sonarr" "transmission" "jellyfin" ];
     gid = 3000;
   };
   services.radarr = {

@@ -30,8 +30,16 @@
       fsType = "vfat";
     };
 
+  fileSystems."/media" =
+    {
+      device = "/dev/disk/by-uuid/DA80038C80036E77";
+      fsType = "ntfs";
+    };
+
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/8419193d-4506-4f2f-8e32-83704393f871"; }];
+    [{
+      device = "/dev/disk/by-uuid/8419193d-4506-4f2f-8e32-83704393f871";
+    }];
 
   networking.useDHCP = lib.mkDefault true;
   networking.hostName = "xenon"; # Define your hostname.
