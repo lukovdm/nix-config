@@ -21,8 +21,11 @@
   };
   services.prowlarr = {
     enable = true;
+    openFirewall = true;
   };
-  networking.firewall.allowedTCPPorts = [ 9696 ];
+  systemd.services.prowlarr.environment = {
+    DOTNET_CLI_HOME = "/tmp/";
+  };
   services.transmission = {
     enable = true;
     group = "media";
