@@ -46,8 +46,11 @@
   networking.networkmanager.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "balanced";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.thermald.enable = true;
+  ervices.fwupd.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
