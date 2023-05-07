@@ -50,7 +50,7 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   services.thermald.enable = true;
-  ervices.fwupd.enable = true;
+  services.fwupd.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
