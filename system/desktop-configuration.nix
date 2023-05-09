@@ -39,6 +39,7 @@
   # Installed system packages
   environment.systemPackages = with pkgs; [
     firefox
+    xdg-desktop-portal
     xorg.xkill
 
     libsForQt5.kdeconnect-kde
@@ -46,6 +47,7 @@
     libsForQt5.sddm-kcm
     libsForQt5.ark
     libsForQt5.plasma-browser-integration
+    libsForQt5.xdg-desktop-portal-kde
     kde-gtk-config
   ];
 
