@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let 
+let
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive) scheme-full
       ;
@@ -10,7 +10,7 @@ in
     ./programs
     ./services
   ];
-  
+
   home = {
     username = "luko";
     homeDirectory = "/home/luko";
@@ -42,6 +42,7 @@ in
       openscad
       super-slicer
       audacity
+      blender
 
       # Programming stuff
       coq
