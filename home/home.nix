@@ -43,6 +43,7 @@ in
       super-slicer
       audacity
       blender
+      obsidian
 
       # Programming stuff
       coq
