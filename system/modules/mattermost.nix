@@ -9,7 +9,7 @@
   services.nginx.virtualHosts = {
     "mm.luko.dev" = {
       enableACME = true;
-      foreceSSL = true;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:8065";
         proxyWebsockets = true;
