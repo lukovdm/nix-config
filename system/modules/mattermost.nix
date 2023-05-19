@@ -4,6 +4,8 @@
     enable = true;
     siteName = "BF2 Board Mattermost";
     siteUrl = "https://mm.luko.dev";
+    mutableConfig = true;
+    preferNixConfig = true;
   };
 
   services.nginx.virtualHosts = {
