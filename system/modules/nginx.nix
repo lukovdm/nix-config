@@ -39,7 +39,7 @@
 
   security.acme = {
     acceptTerms = true;
-    email = "services@luko.dev";
+    defaults.email = "services@luko.dev";
   };
 
   services.nginx.virtualHosts = {
