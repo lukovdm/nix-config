@@ -8,6 +8,8 @@
     ./modules/networking.nix
     ./modules/mediarr.nix
     ./modules/common.nix
+    ./modules/nginx.nix
+    ./modules/mattermost.nix
   ];
 
   hardware.opengl.enable = true;

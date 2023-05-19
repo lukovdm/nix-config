@@ -6,7 +6,6 @@
 {
   imports = [
     ./modules/networking.nix
-    ./modules/jellyfin.nix
     ./modules/common.nix
   ];
 
