@@ -4,7 +4,6 @@
     enable = true;
     siteName = "BF2 Board Mattermost";
     siteUrl = "https://mm.luko.dev";
-    forward80To443 = true;
   };
 
   services.nginx.virtualHosts."mm.luko.dev" = {
