@@ -52,6 +52,7 @@
       locations."/" = {
         proxyPass = "http://192.168.1.127:8123";
         proxyWebsockets = true;
+        recommendedProxySettings = true;
       };
     };
   };
