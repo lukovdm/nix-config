@@ -41,4 +41,15 @@
     acceptTerms = true;
     email = "services@luko.dev";
   };
+
+  services.nginx.virtualHosts = {
+    "home.luko.dev" = {
+      enableACME = true;
+      forceSSL = true;
+      location."/" = {
+        proxyPass = "http://192.168.1.127:8123";
+        proxyWebsockets = true;
+      };
+    };
+  };
 }
