@@ -8,6 +8,9 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
+    # Log info level
+    logError = "stderr info";
+
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
