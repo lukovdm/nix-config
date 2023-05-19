@@ -10,7 +10,7 @@
     "mm.luko.dev" = {
       enableACME = true;
       foreceSSL = true;
-      location."/" = {
+      locations."/" = {
         proxyPass = "http://127.0.0.1:8065";
         proxyWebsockets = true;
       };
