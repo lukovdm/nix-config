@@ -103,6 +103,9 @@
   # Enable docker
   virtualisation.docker.enable = true;
 
+  # PlatformIO
+  services.udev.packages = [ pkgs.platformio ];
+
   # System version, do not update here!
   system.stateVersion = "22.05";
 
