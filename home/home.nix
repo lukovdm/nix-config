@@ -4,6 +4,57 @@ let
     inherit (pkgs.texlive) scheme-full
       ;
   });
+
+  pycharm-professional = pkgs.unstable.jetbrains.pycharm-professional.overrideAttrs
+    (attrs: {
+      nativeBuildInputs = (attrs.nativeBuildInputs or [ ]) ++ [ autoPatchelfHook ];
+
+      buildInputs = (attrs.buildInputs or [ ]) ++ [
+        stdenv.cc.cc.lib
+        libsecret
+        e2fsprogs
+        libnotify
+        linux-pam
+        audit
+      ];
+
+      # NOTE(Sem Mulder): Hacky way to disable LD_LIBRARY_PATH.
+      installPhase = lib.replaceStrings [ "LD_LIBRARY_PATH" ] [ "WRONG_LD_LIBRARY_PATH" ] attrs.installPhase;
+    });
+
+  webstorm = pkgs.unstable.jetbrains.webstorm.overrideAttrs
+    (attrs: {
+      nativeBuildInputs = (attrs.nativeBuildInputs or [ ]) ++ [ autoPatchelfHook ];
+
+      buildInputs = (attrs.buildInputs or [ ]) ++ [
+        stdenv.cc.cc.lib
+        libsecret
+        e2fsprogs
+        libnotify
+        linux-pam
+        audit
+      ];
+
+      # NOTE(Sem Mulder): Hacky way to disable LD_LIBRARY_PATH.
+      installPhase = lib.replaceStrings [ "LD_LIBRARY_PATH" ] [ "WRONG_LD_LIBRARY_PATH" ] attrs.installPhase;
+    });
+
+  clion = pkgs.unstable.jetbrains.clion.overrideAttrs
+    (attrs: {
+      nativeBuildInputs = (attrs.nativeBuildInputs or [ ]) ++ [ autoPatchelfHook ];
+
+      buildInputs = (attrs.buildInputs or [ ]) ++ [
+        stdenv.cc.cc.lib
+        libsecret
+        e2fsprogs
+        libnotify
+        linux-pam
+        audit
+      ];
+
+      # NOTE(Sem Mulder): Hacky way to disable LD_LIBRARY_PATH.
+      installPhase = lib.replaceStrings [ "LD_LIBRARY_PATH" ] [ "WRONG_LD_LIBRARY_PATH" ] attrs.installPhase;
+    });
 in
 {
   imports = [
@@ -48,9 +99,9 @@ in
       # Programming stuff
       coq
       unstable.zotero
-      unstable.jetbrains.pycharm-professional
-      unstable.jetbrains.webstorm
-      unstable.jetbrains.clion
+      pycharm-professional
+      webstorm
+      clion
       nodePackages.npm
       nodejs
       tex
