@@ -104,6 +104,7 @@ in
       # KDE stuff
       libsForQt5.kate
       libsForQt5.kdenlive
+      libsForQt5.yakuake
 
       # Terminal stuff
       fishPlugins.pisces
