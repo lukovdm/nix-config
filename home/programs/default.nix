@@ -13,6 +13,9 @@
     enable = true;
     userName = "Luko van der Maas";
     userEmail = "me@luko.dev";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.firefox = {
