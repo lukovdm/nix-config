@@ -86,6 +86,7 @@ in
       inkscape
       openscad
       super-slicer
+      prusa-slicer
       audacity
       blender
       obsidian
