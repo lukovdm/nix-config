@@ -86,7 +86,7 @@ in
       inkscape
       openscad
       super-slicer
-      prusa-slicer
+      unstable.prusa-slicer
       audacity
       blender
       obsidian
