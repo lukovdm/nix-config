@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
@@ -16,7 +17,7 @@
   boot.extraModprobeConfig = ''
     options snd-hda-intel model=dell-headset-multi
   '';
-  
+
   boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "5.16") (lib.mkDefault pkgs.linuxPackages_latest);
   boot.kernelParams = [ "mem_sleep_default=deep" "nvme.noacpi=1" ];
 
@@ -25,18 +26,19 @@
   '';
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bbd0cdc3-5483-4fc4-9bd2-8fb0160ae951";
+    {
+      device = "/dev/disk/by-uuid/bbd0cdc3-5483-4fc4-9bd2-8fb0160ae951";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C7BE-45C3";
+    {
+      device = "/dev/disk/by-uuid/C7BE-45C3";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1ecb9365-6cc6-4c9a-94df-35889a7547b4"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/1ecb9365-6cc6-4c9a-94df-35889a7547b4"; }];
 
   boot.initrd.luks.devices = {
     luksroot = {
@@ -62,26 +64,58 @@
   networking.interfaces.wlp170s0.useDHCP = true;
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
-  
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  
+
   # high-resolution display
   hardware.video.hidpi.enable = true;
 
   services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.sddm = lib.mkIf (config.services.fprintd.enable) {
+    text = ''
+      auth 			[success=1 new_authtok_reqd=1 default=ignore]  	pam_unix.so try_first_pass likeauth nullok
+      auth 			sufficient  	${pkgs.fprintd}/lib/security/pam_fprintd.so
+      auth      substack      login
+      account   include       login
+      password  substack      login
+      session   include       login
+    '';
+  };
+
+  security.pam.services.kde = lib.mkIf (config.services.fprintd.enable) {
+    text = '' 
+      # Account management.
+      account required pam_unix.so
+
+      # Authentication management.
+      auth sufficient pam_unix.so nullok  likeauth try_first_pass
+      auth sufficient ${pkgs.fprintd}/lib/security/pam_fprintd.so
+      auth required pam_deny.so
+
+      # Password management.
+      password sufficient pam_unix.so nullok sha512
+
+      # Session management.
+      session required pam_env.so conffile=/etc/pam/environment readenv=0
+      session required pam_unix.so
+    '';
+  };
+
+
   services.xserver.libinput.enable = true;
   hardware.bluetooth.enable = true;
 
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
-  
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
       intel-compute-runtime

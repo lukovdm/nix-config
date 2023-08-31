@@ -101,6 +101,7 @@ in
       nodePackages.npm
       nodejs
       tex
+      autokey
 
       # KDE stuff
       libsForQt5.kate
