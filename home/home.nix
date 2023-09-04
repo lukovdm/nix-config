@@ -107,6 +107,7 @@ in
       libsForQt5.kate
       libsForQt5.kdenlive
       libsForQt5.yakuake
+      libsForQt5.krohnkite
 
       # Terminal stuff
       fishPlugins.pisces
