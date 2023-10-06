@@ -102,6 +102,7 @@ in
       nodejs
       tex
       autokey
+      ltex-ls
 
       # KDE stuff
       libsForQt5.kate
