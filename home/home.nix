@@ -72,6 +72,7 @@ in
       spotify
       vlc
       calibre
+      gnucash
 
       # Socials
       zoom-us
