@@ -69,7 +69,7 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # high-resolution display
-  hardware.video.hidpi.enable = true;
+  #find new setting to fix this
 
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = false;
