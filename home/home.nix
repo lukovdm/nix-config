@@ -107,6 +107,7 @@ in
       # KDE stuff
       libsForQt5.kate
       libsForQt5.kdenlive
+      libsForQt5.konsole
       libsForQt5.yakuake
       libsForQt5.krohnkite
 
