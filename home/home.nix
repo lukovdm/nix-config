@@ -90,7 +90,6 @@ in
       unstable.prusa-slicer
       audacity
       blender
-      obsidian
       darktable
 
       # Programming stuff
