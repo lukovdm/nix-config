@@ -73,6 +73,7 @@ in
       vlc
       calibre
       gnucash
+      minecraft
 
       # Socials
       zoom-us
