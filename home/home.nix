@@ -73,7 +73,7 @@ in
       vlc
       calibre
       gnucash
-      minecraft
+      prismlauncher
 
       # Socials
       zoom-us
