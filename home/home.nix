@@ -92,7 +92,7 @@ in
       audacity
       blender
       darktable
-      upscayl
+      unstable.upscayl
 
       # Programming stuff
       coq
