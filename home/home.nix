@@ -118,7 +118,7 @@ in
       fishPlugins.foreign-env
       any-nix-shell
       fzf
-      exa
+      eza
       prettyping
     ];
   };
