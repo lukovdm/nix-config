@@ -90,7 +90,7 @@
 
   # Add fonts
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "SourceCodePro" "Hack" ]; })
       noto-fonts
       font-awesome
