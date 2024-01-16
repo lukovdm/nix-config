@@ -36,4 +36,13 @@
         ../system/hardware-configurations/xenon.nix
       ];
     };
+
+  live-usb = inputs.nixpkgs.lib.nixosSystem
+    {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+
+      ];
+    };
 }

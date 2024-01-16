@@ -53,8 +53,10 @@
     device = "nodev";
     efiSupport = true;
     enableCryptodisk = true;
+    # efiInstallAsRemovable = true;
   };
   boot.loader.efi.efiSysMountPoint = "/boot/EFI";
+  # boot.loader.efi.canTouchEfiVariables = false;
 
   hardware.acpilight.enable = lib.mkDefault true;
 
