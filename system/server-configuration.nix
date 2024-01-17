@@ -8,8 +8,8 @@
     ./modules/networking.nix
     ./modules/mediarr.nix
     ./modules/common.nix
-    ./modules/nginx.nix
-    ./modules/mattermost.nix
+    # ./modules/nginx.nix
+    # ./modules/mattermost.nix
   ];
 
   # System version, do not update here!
