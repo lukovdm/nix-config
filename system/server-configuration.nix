@@ -12,11 +12,7 @@
     ./modules/mattermost.nix
   ];
 
-  hardware.opengl.enable = true;
-
-  services.logind.lidSwitchExternalPower = "ignore";
-
   # System version, do not update here!
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 
 }

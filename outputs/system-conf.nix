@@ -22,7 +22,7 @@
     inherit system;
     specialArgs = { inherit inputs; };
     modules = [
-      ../system/desktop-configuration.nix
+      ../system/server-configuration.nix
       ../system/hardware-configurations/krypton.nix
     ];
   };
