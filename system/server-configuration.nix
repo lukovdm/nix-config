@@ -8,6 +8,7 @@
     ./modules/networking.nix
     ./modules/mediarr.nix
     ./modules/common.nix
+    ./modules/assist.nix
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
   ];
