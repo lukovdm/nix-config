@@ -11,6 +11,7 @@
     faster-whisper.servers.whisper = {
       enable = true;
       model = "medium-int8";
+      language = "en";
       uri = "tcp://0.0.0.0:10300";
     };
 
