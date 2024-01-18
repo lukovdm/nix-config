@@ -10,7 +10,7 @@
 
     faster-whisper.servers.whisper = {
       enable = true;
-      model = "small-int8";
+      model = "tiny";
       language = "en";
       uri = "tcp://0.0.0.0:10300";
     };
