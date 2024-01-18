@@ -17,7 +17,10 @@
 
     openwakeword = {
       enable = true;
-      preloadModels = "hey_jarvis";
+      preloadModels = [
+        "hey_jarvis"
+        "hey_mycroft"
+      ];
       uri = "tcp://0.0.0.0:10400";
     };
   };
