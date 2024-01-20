@@ -23,6 +23,11 @@
     enable = true;
     openFirewall = true;
   };
+  services.bazarr = {
+    enable = true;
+    group = "media";
+    openFirewall = true;
+  };
   systemd.services.prowlarr.environment = {
     DOTNET_CLI_HOME = "/tmp/";
   };
