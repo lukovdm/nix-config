@@ -67,6 +67,7 @@
     git
     git-crypt
     dig
+    htop
 
     openvpn
     nixpkgs-fmt
