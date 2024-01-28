@@ -10,8 +10,9 @@
 
     faster-whisper.servers.whisper = {
       enable = true;
-      model = "tiny";
+      model = "base";
       language = "en";
+      beamSize = 5;
       uri = "tcp://0.0.0.0:10300";
     };
 
