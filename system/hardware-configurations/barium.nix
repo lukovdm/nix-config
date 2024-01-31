@@ -64,6 +64,9 @@
   networking.useDHCP = false;
   networking.interfaces.wlp170s0.useDHCP = true;
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.scanRandMacAddress = false;
+  networking.networkmanager.wifi.powersave = false;
+
   systemd.services.NetworkManager-wait-online.enable = false;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
