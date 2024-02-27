@@ -47,7 +47,7 @@
     libsForQt5.ark
     libsForQt5.plasma-browser-integration
     libsForQt5.xdg-desktop-portal-kde
-    libsForQt6.qt6.qtwebsockets
+    libsForQt5.qt5.qtwebsockets
     kde-gtk-config
   ];
 
