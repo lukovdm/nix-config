@@ -47,6 +47,7 @@
     libsForQt5.ark
     libsForQt5.plasma-browser-integration
     libsForQt5.xdg-desktop-portal-kde
+    libsForQt6.qt6.qtwebsockets
     kde-gtk-config
   ];
 
@@ -75,6 +76,8 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+  hardware.steam-hardware.enable = true;
+  services.joycond.enable = true;
 
   programs._1password-gui = {
     enable = true;
