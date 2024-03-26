@@ -74,6 +74,7 @@ in
       calibre
       gnucash
       prismlauncher
+      tor-browser
 
       # Socials
       zoom-us
