@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-full
+  tex = (pkgs.unstable.texlive.combine {
+    inherit (pkgs.unstable.texlive) scheme-full
       ;
   });
 
