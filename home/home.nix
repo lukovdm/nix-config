@@ -90,6 +90,7 @@ in
       openscad
       super-slicer
       unstable.prusa-slicer
+      unstable.orca-slicer
       audacity
       blender
       darktable
