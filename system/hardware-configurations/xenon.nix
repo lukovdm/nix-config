@@ -75,6 +75,7 @@
       vaapiVdpau
       libvdpau-va-gl
       intel-compute-runtime
+      mesa.drivers
     ];
   };
 }

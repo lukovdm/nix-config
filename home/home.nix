@@ -49,6 +49,8 @@ let
       # NOTE(Sem Mulder): Hacky way to disable LD_LIBRARY_PATH.
       installPhase = lib.replaceStrings [ "LD_LIBRARY_PATH" ] [ "WRONG_LD_LIBRARY_PATH" ] attrs.installPhase;
     });
+
+  mesa-slicer = pkgs.mesa;
 in
 {
   imports = [
@@ -90,7 +92,7 @@ in
       openscad
       super-slicer
       unstable.prusa-slicer
-      unstable.orca-slicer
+      (unstable.bambu-studio.override { mesa = pkgs.mesa; })
       audacity
       blender
       darktable
