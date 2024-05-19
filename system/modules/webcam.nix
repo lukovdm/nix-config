@@ -7,7 +7,7 @@
       restreamer = {
         autoStart = true;
         image = "datarhei/restreamer:latest";
-        ports = [ "8080:9000" ];
+        ports = [ "9000:8080" ];
         volumes = [
           "/var/lib/restreamer/db:/restreamer/db"
         ];
