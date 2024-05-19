@@ -92,7 +92,7 @@ in
       openscad
       super-slicer
       unstable.prusa-slicer
-      (unstable.bambu-studio.override { mesa = pkgs.mesa; })
+      (unstable.orca-slicer.override { bambu-studio = (unstable.bambu-studio.override { mesa = pkgs.mesa; }); })
       audacity
       blender
       darktable

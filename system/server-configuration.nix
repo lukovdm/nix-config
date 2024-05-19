@@ -9,7 +9,8 @@
     ./modules/mediarr.nix
     ./modules/common.nix
     ./modules/assist.nix
-    ./modules/vpn.nix
+    ./modules/webcam.nix
+    # ./modules/vpn.nix
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
   ];
