@@ -1,7 +1,7 @@
 { config, ... }: {
   virtualisation.oci-containers.containers = {
     restreamer = {
-      autostart = true;
+      autoStart = true;
       image = "datarhei/restreamer:latest";
       portMap = {
         "8080:8080/tcp" = 8080;
