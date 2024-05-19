@@ -15,9 +15,10 @@
           "RS_USERNAME" = "admin";
           "RS_PASSWORD" = "admin";
           "RS_MODE" = "USBCAM";
+          "RS_USBCAM_VIDEODEVICE" = "/dev/video0";
         };
         extraOptions = [
-          "--device=/dev/video0:/dev/video"
+          "--device=/dev/video0:/dev/video0"
         ];
       };
     };
