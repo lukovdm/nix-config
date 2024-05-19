@@ -17,7 +17,7 @@
           "RS_MODE" = "USBCAM";
         };
         extraOptions = [
-          "--device /dev/video0:/dev/video"
+          "--device=/dev/video0:/dev/video"
         ];
       };
     };
