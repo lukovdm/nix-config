@@ -72,8 +72,6 @@
     openvpn
     nixpkgs-fmt
 
-    pinentry
-    pinentry-qt
     gnupg
   ];
 
