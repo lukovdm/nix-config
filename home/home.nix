@@ -110,11 +110,11 @@ in
       autokey
 
       # KDE stuff
-      libsForQt5.kate
-      libsForQt5.kdenlive
-      libsForQt5.konsole
-      libsForQt5.yakuake
-      libsForQt5.krohnkite
+      kdePackages.kate
+      kdePackages.kdenlive
+      kdePackages.konsole
+      kdePackages.yakuake
+      kdePackages.krohnkite
 
       # Terminal stuff
       fishPlugins.pisces
