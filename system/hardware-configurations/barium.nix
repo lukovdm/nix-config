@@ -108,7 +108,7 @@
   };
 
 
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
   hardware.bluetooth.enable = true;
 
   nixpkgs.config.packageOverrides = pkgs: {
