@@ -50,6 +50,7 @@
     kdePackages.ark
     kdePackages.plasma-browser-integration
     kdePackages.xdg-desktop-portal-kde
+    kdePackages.kscreen
     kde-gtk-config
   ];
 
