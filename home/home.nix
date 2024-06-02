@@ -114,7 +114,6 @@ in
       kdePackages.kdenlive
       kdePackages.konsole
       kdePackages.yakuake
-      kdePackages.krohnkite
 
       # Terminal stuff
       fishPlugins.pisces
