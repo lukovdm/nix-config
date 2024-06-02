@@ -17,6 +17,7 @@
   services.desktopManager = {
     plasma6 = {
       enable = true;
+      enableQt5Integration = true;
     };
   };
 
@@ -48,9 +49,7 @@
     kdePackages.krunner
     kdePackages.sddm-kcm
     kdePackages.ark
-    kdePackages.plasma-browser-integration
     kdePackages.xdg-desktop-portal-kde
-    kdePackages.kscreen
     kde-gtk-config
   ];
 
