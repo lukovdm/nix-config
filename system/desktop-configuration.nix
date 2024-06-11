@@ -69,7 +69,7 @@
   };
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
   # Important to resolve .local domains of printers, otherwise you get an error
