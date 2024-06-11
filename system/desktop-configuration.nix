@@ -56,7 +56,7 @@
   # Printing
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ gutenprint gutenprintBin hplip hplipWithPlugin ];
+    drivers = with pkgs; [ gutenprint gutenprintBin hplip hplipWithPlugin epson-escpr ];
     browsedConf = ''
       BrowseRemoteProtocols none
       BrowseLocalProtocols none
