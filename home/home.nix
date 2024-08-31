@@ -89,6 +89,7 @@ in
       inkscape
       openscad
       orca-slicer
+      bambu-studio
       audacity
       blender
       darktable
