@@ -93,6 +93,7 @@ in
       audacity
       blender
       darktable
+      obsidian
 
       # Programming stuff
       coq
