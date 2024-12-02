@@ -1,6 +1,10 @@
 { config, pkgs, inputs, ... }:
 {
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "aspnetcore-runtime-wrapped-6.0.36"
+  ];
+
   # Enable flakes
   nix = {
     # Flakes settings
