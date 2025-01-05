@@ -20,6 +20,9 @@
         unstable = import inputs.nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "aspnetcore-runtime-wrapped-6.0.36"
+          ];
         };
       };
     in
@@ -32,7 +35,7 @@
 
       nixosConfigurations = (
         import ./outputs/system-conf.nix {
-          inherit inputs system;
+          inherit inputs system overlay-unstable;
         }
       );
     };

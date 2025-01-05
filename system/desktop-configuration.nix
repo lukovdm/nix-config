@@ -28,7 +28,7 @@
     };
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Enable audio
   security.rtkit.enable = true;

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   users.groups.media = {
     members = [ "radarr" "sonarr" "transmission" "jellyfin" ];
@@ -13,6 +13,7 @@
     enable = true;
     group = "media";
     openFirewall = true;
+    package = pkgs.sonarr;
   };
   services.jellyfin = {
     enable = true;

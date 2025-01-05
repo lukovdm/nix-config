@@ -1,10 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "aspnetcore-runtime-wrapped-6.0.36"
-  ];
-
   # Enable flakes
   nix = {
     # Flakes settings
@@ -34,8 +30,6 @@
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
