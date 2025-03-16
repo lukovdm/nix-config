@@ -24,9 +24,7 @@
     ];
   };
 
-  config.systemd.timers = flip mapAttrs' config.services.borgbackup.jobs (name: value:
-    nameValuePair "borgbackup-job-${name}" {
-      timerConfig.Persistent = true;
-    }
-  );
+  config.systemd.timers.borgbackup-job- = {
+    timerConfig.Persistent = true;
+  };
 }
