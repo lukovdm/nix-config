@@ -4,7 +4,7 @@
     paths = "/home/luko";
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_ed25519";
-    repo = "ssh://'Luko van der Maas'@nas-opdeboot:/var/services/homes/'Luko van der Maas'/Barium";
+    repo = "'Luko van der Maas'@nas-opdeboot:~/Barium";
     compression = "auto,zstd";
     startAt = "daily";
     exclude = [
