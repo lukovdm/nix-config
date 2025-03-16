@@ -7,6 +7,7 @@
   imports = [
     ./modules/networking.nix
     ./modules/common.nix
+    ./modules/backup.nix
   ];
 
   # Display manager
