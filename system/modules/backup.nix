@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  services.borgbackup.jobs.home-danbst = {
+  services.borgbackup.jobs.home = {
     paths = "/home/luko";
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_ed25519";
