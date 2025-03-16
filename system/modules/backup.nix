@@ -7,7 +7,6 @@
     repo = "ssh://'Luko van der Maas'@nas-opdeboot:/var/services/homes/'Luko van der Maas'/Barium";
     compression = "auto,zstd";
     startAt = "daily";
-    preHook = "tailscale up";
     exclude = [
       ".cache"
       "*/cache2" # firefox
