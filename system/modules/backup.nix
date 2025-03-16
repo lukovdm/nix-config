@@ -4,7 +4,7 @@
     paths = "/home/luko";
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_ed25519";
-    repo = "'Luko van der Maas'@nas-opdeboot:~/Barium";
+    repo = "Luko@nas-opdeboot:~/Barium";
     compression = "auto,zstd";
     startAt = "daily";
     exclude = [
@@ -23,4 +23,10 @@
       "*/.venv"
     ];
   };
+
+  config.systemd.timers = flip mapAttrs' config.services.borgbackup.jobs (name: value:
+    nameValuePair "borgbackup-job-${name}" {
+      timerConfig.Persistent = true;
+    }
+  );
 }
