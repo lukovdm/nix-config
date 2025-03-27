@@ -88,8 +88,8 @@ in
       gimp
       inkscape
       openscad
-      orca-slicer
-      bambu-studio
+      pkgs.unstable.orca-slicer
+      pkgs.unstable.bambu-studio
       audacity
       blender
       darktable
