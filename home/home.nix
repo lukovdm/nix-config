@@ -75,6 +75,7 @@ in
       gnucash
       prismlauncher
       tor-browser
+      betaflight-configurator
 
       # Socials
       zoom-us
