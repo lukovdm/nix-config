@@ -83,6 +83,7 @@ in
       mattermost-desktop
       thunderbird
       discord
+      signal-desktop
 
       # Creative stuff
       libreoffice
