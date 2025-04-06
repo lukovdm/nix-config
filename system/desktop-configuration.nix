@@ -40,9 +40,12 @@
     pulse.enable = true;
   };
 
+  programs.firefox = {
+    enable = true;
+  };
+
   # Installed system packages
   environment.systemPackages = with pkgs; [
-    firefox
     xdg-desktop-portal
     xorg.xkill
 
