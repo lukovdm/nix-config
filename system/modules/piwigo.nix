@@ -2,7 +2,7 @@
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
-      restreamer = {
+      piwigo = {
         autoStart = true;
         image = "lscr.io/linuxserver/piwigo:latest";
         ports = [ "80:8888" ];
