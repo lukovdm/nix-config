@@ -5,7 +5,7 @@
       piwigo = {
         autoStart = true;
         image = "lscr.io/linuxserver/piwigo:latest";
-        ports = [ "80:8888" ];
+        ports = [ "8888:80" ];
         volumes = [
           "/media/piwigo/config:/config"
           "/media/piwigo/gallery:/gallery"
