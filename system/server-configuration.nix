@@ -10,6 +10,7 @@
     ./modules/common.nix
     ./modules/assist.nix
     ./modules/webcam.nix
+    ./modules/piwigo.nix
     # ./modules/vpn.nix
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
