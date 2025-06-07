@@ -54,7 +54,6 @@
     kdePackages.sddm-kcm
     kdePackages.ark
     kdePackages.xdg-desktop-portal-kde
-    kde-gtk-config
   ];
 
   # Printing
@@ -102,7 +101,9 @@
   # Add fonts
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "SourceCodePro" "Hack" ]; })
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.hack
       noto-fonts
       font-awesome
       roboto-mono
