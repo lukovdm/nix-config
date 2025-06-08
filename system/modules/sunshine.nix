@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   services = {
     desktopManager.plasma6.enable = true;
 
@@ -30,7 +30,6 @@
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
-    
   };
 
   programs.steam = {
