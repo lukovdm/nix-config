@@ -10,6 +10,7 @@
     ./modules/common.nix
     ./modules/assist.nix
     ./modules/photos.nix
+    ./modules/sunshine.nix
     # ./modules/webcam.nix
     # ./modules/vpn.nix
     # ./modules/nginx.nix

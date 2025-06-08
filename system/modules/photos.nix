@@ -6,7 +6,7 @@
     originalsPath = "/var/lib/private/photoprism/originals";
     address = "0.0.0.0";
     settings = {
-      PHOTOPRISM_ADMIN_USER = "admin";
+      PHOTOPRISM_ADMIN_USER = "luko";
       PHOTOPRISM_ADMIN_PASSWORD = "luko";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
