@@ -1,13 +1,16 @@
 { config, pkgs, ... }: {
-  boot.initrd.prepend = [ ''
-    mkdir -p /lib/firmware/edid
-    cp ${../../resources/HDR1080p_120.bin} /lib/firmware/edid/qhd.bin
-  ''] ;
-
   boot.kernelParams = [
-    "drm.edid_firmware=HDMI-A-1:edid/qhd.bin"
+    "drm.edid_firmware=HDMI-A-1:edid/edid.bin"
     "video=HDMI-A-1:1920x1080@120e"
   ];
+
+  hardware.firmware = [
+  (
+    pkgs.runCommand "edid.bin" { } ''
+      mkdir -p $out/lib/firmware/edid
+      cp ${../../resources/HDR1080p_120.bin} $out/lib/firmware/edid/edid.bin
+    ''
+  )];
 
   services = {
     desktopManager.plasma6.enable = true;
