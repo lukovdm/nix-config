@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   boot.initrd.prepend = ''
     mkdir -p /lib/firmware/edid
-    cp ${./resources/HDR1080p_120.bin} /lib/firmware/edid/qhd.bin
+    cp ${../../resources/HDR1080p_120.bin} /lib/firmware/edid/qhd.bin
   '';
 
   boot.kernelParams = [
