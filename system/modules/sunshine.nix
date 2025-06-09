@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   boot.kernelParams = [
     "drm.edid_firmware=HDMI-A-1:edid/edid.bin"
-    "video=HDMI-A-1:1920x1080@120e"
+    "video=HDMI-A-1:1280x720@60e"
   ];
 
   hardware.firmware = [
