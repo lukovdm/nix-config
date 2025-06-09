@@ -1,8 +1,8 @@
 { config, pkgs, ... }: {
-  boot.initrd.prepend = ''
+  boot.initrd.prepend = [ ''
     mkdir -p /lib/firmware/edid
     cp ${../../resources/HDR1080p_120.bin} /lib/firmware/edid/qhd.bin
-  '';
+  ''] ;
 
   boot.kernelParams = [
     "drm.edid_firmware=HDMI-A-1:edid/qhd.bin"
