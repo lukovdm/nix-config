@@ -1,4 +1,14 @@
 { config, pkgs, ... }: {
+  boot.initrd.prepend = ''
+    mkdir -p /lib/firmware/edid
+    cp ${./resources/HDR1080p_120.bin} /lib/firmware/edid/qhd.bin
+  '';
+
+  boot.kernelParams = [
+    "drm.edid_firmware=HDMI-A-1:edid/qhd.bin"
+    "video=HDMI-A-1:1280x720@120e"
+  ];
+
   services = {
     desktopManager.plasma6.enable = true;
 
@@ -23,6 +33,9 @@
       haruna # Open source video player built with Qt/QML and libmpv
       wayland-utils # Wayland utilities
       wl-clipboard # Command-line copy/paste utilities for Wayland
+
+      firefox
+      nvidia-docker
     ];
 
   services.sunshine = {
