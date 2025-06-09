@@ -18,6 +18,10 @@
     displayManager.sddm.enable = true;
 
     displayManager.sddm.wayland.enable = true;
+    displayManager.autoLogin = {
+      enable = true;
+      user = "luko";
+    };
   };
 
   environment.systemPackages = with pkgs;
