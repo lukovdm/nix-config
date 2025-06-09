@@ -6,7 +6,7 @@
 
   boot.kernelParams = [
     "drm.edid_firmware=HDMI-A-1:edid/qhd.bin"
-    "video=HDMI-A-1:1280x720@120e"
+    "video=HDMI-A-1:1920x1080@120e"
   ];
 
   services = {
