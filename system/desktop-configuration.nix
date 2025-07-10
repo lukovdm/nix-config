@@ -118,6 +118,11 @@
   # PlatformIO
   services.udev.packages = [ pkgs.platformio ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    xorg.libICE
+  ];
+
   # System version, do not update here!
   system.stateVersion = "22.05";
 
