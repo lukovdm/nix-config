@@ -121,6 +121,11 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     xorg.libICE
+    icu
+    libz
+    fontconfig
+    xorg.libX11
+    xorg.libSM
   ];
 
   # System version, do not update here!

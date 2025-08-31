@@ -76,6 +76,7 @@ in
       prismlauncher
       tor-browser
       betaflight-configurator
+      ffmpeg
 
       # Socials
       zoom-us
