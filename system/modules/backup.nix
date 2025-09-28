@@ -3,7 +3,7 @@
   services.borgbackup.jobs.home = {
     paths = "/home/luko";
     encryption.mode = "none";
-    environment.BORG_RSH = "s'sh -i /home/luko/.ssh/id_rsa";
+    environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_rsa";
     repo = "Luko@nas-opdeboot:~/Barium";
     compression = "auto,zstd";
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
