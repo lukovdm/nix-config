@@ -97,6 +97,7 @@ in
       blender
       darktable
       obsidian
+      sdrpp
 
       # Programming stuff
       coq

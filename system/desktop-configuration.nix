@@ -98,6 +98,9 @@
   };
   services.pcscd.enable = true;
 
+  hardware.rtl-sdr.enable = true;
+  users.users.luko.extraGroups = [ "plugdev" ];
+
   # Add fonts
   fonts = {
     packages = with pkgs; [
