@@ -32,6 +32,12 @@
       device = "/dev/disk/by-uuid/DA80038C80036E77";
       fsType = "ntfs";
     };
+    
+  fileSystems."/bigmedia" = {
+    device = "/dev/disk/by-uuid/bae95f52-ed58-4068-8b04-d690915971d3";
+    fsType = "btrfs";
+    options = [ "compress=zstd" ];
+  };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/b21a2391-9889-4ccf-a663-e81a422b139f"; }];
