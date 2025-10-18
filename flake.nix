@@ -22,6 +22,7 @@
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
             "aspnetcore-runtime-wrapped-6.0.36"
+            "broadcom-sta-6.30.223.271-57-6.12.44"
           ];
         };
       };
