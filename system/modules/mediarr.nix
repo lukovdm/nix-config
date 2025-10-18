@@ -40,8 +40,8 @@
     settings = {
       blocklist-enabled = true;
       blocklist-url = "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz";
-      download-dir = "/media/Torrents";
-      incomplete-dir = "/media/Incomplete_Torrents/";
+      download-dir = "/bigmedia/Torrents";
+      incomplete-dir = "/bigmedia/Incomplete_Torrents/";
       encryption = 1;
       message-level = 1;
       peer-port = 50778;
