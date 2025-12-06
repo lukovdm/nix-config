@@ -131,6 +131,8 @@
     xorg.libSM
   ];
 
+  hardware.keyboard.qmk.enable = true;
+
   # System version, do not update here!
   system.stateVersion = "22.05";
 
