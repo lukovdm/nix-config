@@ -109,6 +109,7 @@ in
       nodejs
       tex
       autokey
+      netlogo
 
       # KDE stuff
       kdePackages.kate
