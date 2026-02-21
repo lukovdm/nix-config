@@ -24,10 +24,6 @@
 
   programs.vscode = {
     enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      github.copilot
-      ms-vscode.cpptools
-    ];
   };
 
   programs.htop = {
