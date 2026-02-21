@@ -43,4 +43,28 @@ in
   #   mysecretpassword
   # Create it with: nix run github:ryantm/agenix -- -e secrets/photoprism-admin-password.age
   "photoprism-admin-password.age".publicKeys = [ krypton luko ];
+
+  # Restreamer webcam credentials (krypton media server)
+  # The secret file must contain two lines in env format:
+  #   RS_USERNAME=youruser
+  #   RS_PASSWORD=yourpassword
+  # Create it with: nix run github:ryantm/agenix -- -e secrets/restreamer-credentials.age
+  "restreamer-credentials.age".publicKeys = [ krypton luko ];
+
+  # BGG-MM config (krypton)
+  # The secret file must be a JSON file, e.g.:
+  #   {
+  #     "bgg": { "username": "yourbgguser" },
+  #     "shop": { "base_url": "http://www.moenen-en-mariken.nl" },
+  #     "ntfy": { "topic": "yourtopic", "token": "yourtoken" },
+  #     "state_file": "/var/lib/bgg-mm/availability.json"
+  #   }
+  # Create it with: nix run github:ryantm/agenix -- -e secrets/bbg-mm-config.age
+  "bbg-mm-config.age".publicKeys = [ krypton luko ];
+
+  # BGG-MM API token (krypton)
+  # The secret file must contain one line in env format:
+  #   BGG_API_TOKEN=yourtoken
+  # Create it with: nix run github:ryantm/agenix -- -e secrets/bbg-mm-token.age
+  "bbg-mm-token.age".publicKeys = [ krypton luko ];
 }

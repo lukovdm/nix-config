@@ -1,4 +1,9 @@
 { config, ... }: {
+  age.secrets.restreamer-credentials = {
+    file = ../../secrets/restreamer-credentials.age;
+    owner = "root";
+  };
+
   virtualisation.docker.enable = true;
 
   virtualisation.oci-containers = {
@@ -12,11 +17,12 @@
           "/var/lib/restreamer/db:/restreamer/db"
         ];
         environment = {
-          "RS_USERNAME" = "admin";
-          "RS_PASSWORD" = "admin";
           "RS_MODE" = "USBCAM";
           "RS_USBCAM_VIDEODEVICE" = "/dev/video0";
         };
+        environmentFiles = [
+          config.age.secrets.restreamer-credentials.path
+        ];
         extraOptions = [
           "--device=/dev/video0:/dev/video0"
         ];

@@ -44,6 +44,7 @@ in
     specialArgs = { inherit inputs; };
     modules = [
       inputs.agenix.nixosModules.default
+      inputs.bbg-mm.nixosModules.bgg-mm
       ../system/server-configuration.nix
       ../system/hardware-configurations/krypton.nix
     ];

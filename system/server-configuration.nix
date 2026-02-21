@@ -11,6 +11,7 @@
     ./modules/assist.nix
     ./modules/photos.nix
     ./modules/sunshine.nix
+    ./modules/bbg-mm.nix
     # ./modules/webcam.nix
     # ./modules/vpn.nix
     # ./modules/nginx.nix
