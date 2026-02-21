@@ -2,6 +2,7 @@
 {
   imports = [
     ./fish
+    ./plasma.nix
   ];
 
   programs.fzf = {

@@ -31,6 +31,7 @@ let
       inherit pkgs;
       modules = [
         ../home/home.nix
+        inputs.plasma-manager.homeModules.plasma-manager
       ];
     }
   );
