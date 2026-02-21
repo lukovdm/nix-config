@@ -1,10 +1,5 @@
 { config, ... }:
 {
-  age.secrets.bbg-mm-config = {
-    file = ../../secrets/bbg-mm-config.age;
-    owner = "bggmm";
-  };
-
   age.secrets.bbg-mm-token = {
     file = ../../secrets/bbg-mm-token.age;
     owner = "bggmm";
@@ -22,7 +17,19 @@
     enable = true;
     user = "bggmm";
     schedule = "0 8 * * *";
-    configFile = config.age.secrets.bbg-mm-config.path;
     tokenFile = config.age.secrets.bbg-mm-token.path;
+    stateFile = "/var/lib/bgg-mm/availability.json";
+
+    bgg = {
+      username = "mageleve";
+    };
+
+    shop = {
+      baseUrl = "http://www.moenen-en-mariken.nl";
+    };
+
+    ntfy = {
+      topic = "bgg_mm_luko";
+    };
   };
 }

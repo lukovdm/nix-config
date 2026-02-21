@@ -51,17 +51,6 @@ in
   # Create it with: nix run github:ryantm/agenix -- -e secrets/restreamer-credentials.age
   "restreamer-credentials.age".publicKeys = [ krypton luko ];
 
-  # BGG-MM config (krypton)
-  # The secret file must be a JSON file, e.g.:
-  #   {
-  #     "bgg": { "username": "yourbgguser" },
-  #     "shop": { "base_url": "http://www.moenen-en-mariken.nl" },
-  #     "ntfy": { "topic": "yourtopic", "token": "yourtoken" },
-  #     "state_file": "/var/lib/bgg-mm/availability.json"
-  #   }
-  # Create it with: nix run github:ryantm/agenix -- -e secrets/bbg-mm-config.age
-  "bbg-mm-config.age".publicKeys = [ krypton luko ];
-
   # BGG-MM API token (krypton)
   # The secret file must contain one line in env format:
   #   BGG_API_TOKEN=yourtoken
