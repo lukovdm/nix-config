@@ -145,8 +145,7 @@ in
                 widget = {
                   type = "photoprism";
                   url = "http://localhost:2342";
-                  username = "{{HOMEPAGE_VAR_PHOTOPRISM_USER}}";
-                  password = "{{HOMEPAGE_VAR_PHOTOPRISM_PASS}}";
+                  key = "{{HOMEPAGE_VAR_PHOTOPRISM_KEY}}";
                 };
               };
             }
