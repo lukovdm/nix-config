@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+  age.secrets.transmission-credentials = {
+    file = ../../secrets/transmission-credentials.age;
+    owner = "transmission";
+  };
+
   users.groups.media = {
     members = [ "radarr" "sonarr" "transmission" "jellyfin" ];
     gid = 3000;
@@ -52,10 +57,7 @@
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
       rpc-authentication-required = true;
-      rpc-username = "xenon";
-      rpc-password = "xenon";
-      umask = 18;
-      utp-enabled = true;
     };
+    credentialsFile = config.age.secrets.transmission-credentials.path;
   };
 }

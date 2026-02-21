@@ -71,6 +71,8 @@
     nixpkgs-fmt
 
     gnupg
+
+    inputs.agenix.packages.${pkgs.system}.default
   ];
 
   programs.fish.enable = true;

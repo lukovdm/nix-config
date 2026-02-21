@@ -1,13 +1,18 @@
 { config, pkgs, ... }:
 {
-   services.photoprism = {
+  age.secrets.photoprism-admin-password = {
+    file = ../../secrets/photoprism-admin-password.age;
+    owner = "photoprism";
+  };
+
+  services.photoprism = {
     enable = true;
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
     address = "0.0.0.0";
+    passwordFile = config.age.secrets.photoprism-admin-password.path;
     settings = {
       PHOTOPRISM_ADMIN_USER = "luko";
-      PHOTOPRISM_ADMIN_PASSWORD = "luko";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
       PHOTOPRISM_DATABASE_NAME = "photoprism";

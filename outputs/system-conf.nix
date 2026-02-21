@@ -8,7 +8,7 @@ let
     config.permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
       "aspnetcore-runtime-6.0.36"
-      "broadcom-sta-6.30.223.271-57-6.12.44"
+      "broadcom-sta-6.30.223.271-59-6.12.63"
     ];
 
     overlays = [
@@ -22,6 +22,7 @@ in
     inherit pkgs;
     specialArgs = { inherit inputs; };
     modules = [
+      inputs.agenix.nixosModules.default
       ../system/desktop-configuration.nix
       ../system/hardware-configurations/barium.nix
     ];
@@ -31,6 +32,7 @@ in
   #   inherit system;
   #   specialArgs = { inherit inputs; };
   #   modules = [
+  #     inputs.agenix.nixosModules.default
   #     ../system/desktop-configuration.nix
   #     ../system/hardware-configurations/vm.nix
   #   ];
@@ -41,6 +43,7 @@ in
     inherit pkgs;
     specialArgs = { inherit inputs; };
     modules = [
+      inputs.agenix.nixosModules.default
       ../system/server-configuration.nix
       ../system/hardware-configurations/krypton.nix
     ];
@@ -53,6 +56,7 @@ in
   #     inherit pkgs;
   #     specialArgs = { inherit inputs; };
   #     modules = [
+  #       inputs.agenix.nixosModules.default
   #       ../system/server-configuration.nix
   #       ../system/hardware-configurations/xenon.nix
   #     ];

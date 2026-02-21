@@ -11,6 +11,11 @@
       url = github:gvolpe/theme-bobthefish;
       flake = false;
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -22,7 +27,7 @@
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
             "aspnetcore-runtime-wrapped-6.0.36"
-            "broadcom-sta-6.30.223.271-57-6.12.44"
+            "broadcom-sta-6.30.223.271-59-6.12.63"
           ];
         };
       };
