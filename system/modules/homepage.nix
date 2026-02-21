@@ -12,6 +12,7 @@ in
     enable = true;
     listenPort = 8082;
     openFirewall = true;
+    allowedHosts = "krypton:8082,localhost:8082,127.0.0.1:8082,krypton.ide-turtle.ts.net:8082,192.168.1.13:8082";
     environmentFile = config.age.secrets.homepage-env.path;
 
     settings = {
