@@ -33,11 +33,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1771678817,
-        "narHash": "sha256-MhvKGta9qUYwVVq5cytlClsmFZYhW5gfxPYcwfb48fk=",
+        "lastModified": 1771679403,
+        "narHash": "sha256-6trAnrXw9biQFB1WfIJBzNaidomPz7VppcRJmXSHpUY=",
         "owner": "lukovdm",
         "repo": "bbg_mm",
-        "rev": "b4329059faff6cb19e3a967950fff740e53bb6e9",
+        "rev": "668e70dded2783a55c4156554e4d783709bfbbfc",
         "type": "github"
       },
       "original": {
