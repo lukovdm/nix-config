@@ -5,7 +5,7 @@ let
       ;
   });
 
-  pycharm-professional = pkgs.unstable.jetbrains.pycharm-professional.overrideAttrs
+  pycharm = pkgs.unstable.jetbrains.pycharm.overrideAttrs
     (attrs: {
       buildInputs = (attrs.buildInputs or [ ]) ++ (with pkgs; [
         stdenv.cc.cc.lib
@@ -102,7 +102,7 @@ in
       # Programming stuff
       coq
       unstable.zotero
-      pycharm-professional
+      pycharm
       webstorm
       clion
       nodePackages.npm
@@ -110,6 +110,7 @@ in
       tex
       autokey
       pkgs.unstable.netlogo
+      github-copilot-cli
 
       # KDE stuff
       kdePackages.kate
