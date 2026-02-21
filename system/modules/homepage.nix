@@ -42,11 +42,11 @@ in
       }
     ];
 
-    # Services: each group only appears if the relevant module is enabled.
+    # Services: groups are combined so duplicate group names don't occur.
     services =
-      lib.optionals cfg.jellyfin.enable [
-        {
-          Media = [
+      let
+        mediaServices =
+          lib.optionals cfg.jellyfin.enable [
             {
               Jellyfin = {
                 href = "http://krypton:8096";
@@ -60,12 +60,8 @@ in
                 };
               };
             }
-          ];
-        }
-      ]
-      ++ lib.optionals cfg.radarr.enable [
-        {
-          Media = [
+          ]
+          ++ lib.optionals cfg.radarr.enable [
             {
               Radarr = {
                 href = "http://krypton:7878";
@@ -78,12 +74,8 @@ in
                 };
               };
             }
-          ];
-        }
-      ]
-      ++ lib.optionals cfg.sonarr.enable [
-        {
-          Media = [
+          ]
+          ++ lib.optionals cfg.sonarr.enable [
             {
               Sonarr = {
                 href = "http://krypton:8989";
@@ -97,11 +89,9 @@ in
               };
             }
           ];
-        }
-      ]
-      ++ lib.optionals cfg.transmission.enable [
-        {
-          "Downloads & Indexing" = [
+
+        downloadServices =
+          lib.optionals cfg.transmission.enable [
             {
               Transmission = {
                 href = "http://krypton:9091";
@@ -115,12 +105,8 @@ in
                 };
               };
             }
-          ];
-        }
-      ]
-      ++ lib.optionals cfg.prowlarr.enable [
-        {
-          "Downloads & Indexing" = [
+          ]
+          ++ lib.optionals cfg.prowlarr.enable [
             {
               Prowlarr = {
                 href = "http://krypton:9696";
@@ -133,12 +119,8 @@ in
                 };
               };
             }
-          ];
-        }
-      ]
-      ++ lib.optionals cfg.bazarr.enable [
-        {
-          "Downloads & Indexing" = [
+          ]
+          ++ lib.optionals cfg.bazarr.enable [
             {
               Bazarr = {
                 href = "http://krypton:6767";
@@ -152,11 +134,9 @@ in
               };
             }
           ];
-        }
-      ]
-      ++ lib.optionals cfg.photoprism.enable [
-        {
-          Photos = [
+
+        photoServices =
+          lib.optionals cfg.photoprism.enable [
             {
               Photoprism = {
                 href = "http://krypton:2342";
@@ -171,11 +151,9 @@ in
               };
             }
           ];
-        }
-      ]
-      ++ lib.optionals cfg.mattermost.enable [
-        {
-          Comms = [
+
+        commsServices =
+          lib.optionals cfg.mattermost.enable [
             {
               Mattermost = {
                 href = "https://mm.luko.dev";
@@ -184,7 +162,10 @@ in
               };
             }
           ];
-        }
-      ];
+      in
+      lib.optionals (mediaServices != []) [ { Media = mediaServices; } ]
+      ++ lib.optionals (downloadServices != []) [ { "Downloads & Indexing" = downloadServices; } ]
+      ++ lib.optionals (photoServices != []) [ { Photos = photoServices; } ]
+      ++ lib.optionals (commsServices != []) [ { Comms = commsServices; } ];
   };
 }
