@@ -29,11 +29,6 @@ in
     enable = true;
 
     functions = {
-      __fish_command_not_found_handler = {
-        body = "/nix/store/yg6vligw4m5mw13pywd3yrvly3ldblnx-command-not-found/bin/command-not-found $argv[1]";
-        onEvent = "fish_command_not_found";
-      };
-
       fish_prompt = custom.prompt;
 
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
