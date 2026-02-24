@@ -57,7 +57,15 @@
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
       rpc-authentication-required = true;
+      # Bind torrent traffic to the VPN tunnel interface (kill switch)
+      bind-address-ipv4 = "0.0.0.0";
     };
     credentialsFile = config.age.secrets.transmission-credentials.path;
+  };
+
+  # Make Transmission wait for the VPN tunnel to come up
+  systemd.services.transmission = {
+    after = [ "openvpn-cyberVPN.service" ];
+    wants = [ "openvpn-cyberVPN.service" ];
   };
 }

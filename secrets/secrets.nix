@@ -70,4 +70,16 @@ in
   #   HOMEPAGE_VAR_PHOTOPRISM_PASS=...
   # Create it with: nix run github:ryantm/agenix -- -e secrets/homepage-env.age
   "homepage-env.age".publicKeys = [ krypton luko ];
+
+  # CyberGhost VPN auth credentials (krypton)
+  # The secret file must contain two lines:
+  #   username
+  #   password
+  # Create it with: agenix -e secrets/cyberghost-auth.age
+  "cyberghost-auth.age".publicKeys = [ krypton luko ];
+
+  # CyberGhost VPN client private key (krypton)
+  # Copy from ~/Prj/vpns/cyberghost/luko_krypton_openvpn/client.key
+  # Create it with: agenix -e secrets/cyberghost-client-key.age
+  "cyberghost-client-key.age".publicKeys = [ krypton luko ];
 }

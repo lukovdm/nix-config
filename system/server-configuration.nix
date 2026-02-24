@@ -14,7 +14,7 @@
     ./modules/bbg-mm.nix
     ./modules/homepage.nix
     # ./modules/webcam.nix
-    # ./modules/vpn.nix
+    ./modules/vpn.nix
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
   ];
