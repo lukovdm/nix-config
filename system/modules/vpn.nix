@@ -81,16 +81,27 @@ in
     '';
   };
 
-  # Kill switch via iptables: Transmission may only send traffic via tun0 or loopback.
+  # Kill switch via iptables: Transmission's internet traffic must go via tun0.
+  # Allow loopback (Sonarr/Radarr local API), tailscale0 (remote web UI),
+  # and any LAN interface (local web UI) — but block everything else so
+  # Transmission cannot leak to the internet if the VPN drops.
   networking.firewall.extraCommands = ''
-    iptables -A OUTPUT -m owner --uid-owner transmission -o lo   -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -o tun0 -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission          -j REJECT
+    iptables -A OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -o tailscale0  -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission                -j REJECT
   '';
   networking.firewall.extraStopCommands = ''
-    iptables -D OUTPUT -m owner --uid-owner transmission -o lo   -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -o tun0 -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission          -j REJECT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -o tailscale0  -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission                -j REJECT || true
   '';
 
   # Register routing table 100 for VPN policy routing
