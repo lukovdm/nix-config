@@ -61,16 +61,10 @@
     credentialsFile = config.age.secrets.transmission-credentials.path;
   };
 
-  # Kill switch: block transmission user from using any interface except tun0 or loopback.
-  # If the VPN is down and tun0 doesn't exist, Transmission has no internet access.
-  # Rules are in vpn.nix to keep them co-located with the VPN config.
-
-  # Make Transmission wait for the VPN tunnel to come up.
-  # Disable PrivateUsers so iptables --uid-owner in the host network namespace
-  # matches the real UID (70) rather than the remapped user namespace UID.
-  systemd.services.transmission = {
-    after = [ "openvpn-cyberVPN.service" ];
-    wants = [ "openvpn-cyberVPN.service" ];
-    serviceConfig.PrivateUsers = false;
-  };
+  # TODO: re-enable when VPN kill switch is working
+  # systemd.services.transmission = {
+  #   after = [ "openvpn-cyberVPN.service" ];
+  #   wants = [ "openvpn-cyberVPN.service" ];
+  #   serviceConfig.PrivateUsers = false;
+  # };
 }
