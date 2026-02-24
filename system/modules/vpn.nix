@@ -88,7 +88,7 @@ in
   networking.firewall.extraCommands = ''
     iptables -t mangle -A OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091
     iptables -A OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -m mark --mark 0x9091 -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT
@@ -98,7 +98,7 @@ in
   networking.firewall.extraStopCommands = ''
     iptables -t mangle -D OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091 || true
     iptables -D OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -m mark --mark 0x9091 -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT || true
