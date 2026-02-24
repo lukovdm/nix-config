@@ -41,12 +41,12 @@ in
       echo "openvpn-up: dev=$DEV local=$LOCAL_IP gw=$GW" | systemd-cat -t openvpn-cyberVPN
       ip route add default via "$GW" dev "$DEV" table 100
       # Route by fwmark instead of UID so only marked (new outbound) packets
-      # use the VPN table — reply packets are not marked and use main table.
-      ip rule add fwmark 0x9091 lookup 100 priority 100
+      ip rule add uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100
     '';
 
     down = ''
-      ip rule del fwmark 0x9091 lookup 100 priority 100 || true
+      TRANS_UID=$(id -u transmission)
+      ip rule del uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100 || true
       ip route flush table 100 || true
     '';
 
@@ -82,28 +82,21 @@ in
     '';
   };
 
-  # Mark new outbound connections from Transmission so they use the VPN routing table.
-  # Reply packets are not marked and use the main table, so the web UI works.
-  # The kill switch (REJECT) still applies to all non-VPN, non-local internet traffic.
+  # Kill switch: Transmission's new outbound connections are routed via tun0
+  # by policy routing (uidrange rule in up script).
+  # ESTABLISHED replies to inbound web UI connections are explicitly allowed.
+  # Everything else is rejected — if VPN drops, Transmission can't reach internet.
   networking.firewall.extraCommands = ''
-    iptables -t mangle -A OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091
-    iptables -A OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -m mark --mark 0x9091 -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -d 100.64.0.0/10 -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission                -j REJECT
+    iptables -A OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -o lo   -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -o tun0 -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission         -j REJECT
   '';
   networking.firewall.extraStopCommands = ''
-    iptables -t mangle -D OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091 || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -m mark --mark 0x9091 -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -d 100.64.0.0/10 -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission                -j REJECT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -o lo   -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -o tun0 -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission         -j REJECT || true
   '';
 
   # Register routing table 100 for VPN policy routing
