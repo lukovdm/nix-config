@@ -19,6 +19,11 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+    extensions = [ pkgs.gh-copilot ];
+  };
+
   programs.firefox = {
     enable = true;
   };
