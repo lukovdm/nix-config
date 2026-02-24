@@ -19,33 +19,33 @@ in
     autoStart = true;
 
     # Called by the NixOS openvpn module after tunnel is up.
-    # $dev and $ifconfig_local are set by OpenVPN.
+    # Args: $1=dev $2=tun-mtu $3=link-mtu $4=ifconfig-local $5=ifconfig-netmask $6=init
     # iproute2 is already in PATH by the module wrapper.
     up = ''
+      DEV="$1"
+      LOCAL_IP="$4"
       TRANS_UID=$(id -u transmission)
-      # Derive gateway from the pushed route-gateway option.
-      # $route_vpn_gateway may be empty when redirect-gateway is filtered;
-      # $route_gateway_1 is set from the server's pushed "route-gateway" option.
-      # Last resort: use the tun peer address ($ifconfig_remote for p2p, or
-      # derive the .1 address from $ifconfig_local for subnet topology).
-      if [ -n "''${route_gateway_1}" ]; then
+      # Derive gateway: prefer pushed route-gateway env vars, fall back to
+      # computing x.y.z.1 from the tunnel's local IP (subnet topology).
+      if [ -n "''${route_gateway_1:-}" ]; then
         GW="''${route_gateway_1}"
-      elif [ -n "''${route_vpn_gateway}" ]; then
+      elif [ -n "''${route_vpn_gateway:-}" ]; then
         GW="''${route_vpn_gateway}"
-      elif [ -n "''${ifconfig_remote}" ]; then
+      elif [ -n "''${ifconfig_remote:-}" ]; then
         GW="''${ifconfig_remote}"
       else
-        # subnet topology: gateway is x.y.z.1
-        GW=$(echo "''${ifconfig_local}" | awk -F. '{print $1"."$2"."$3".1"}')
+        # subnet topology: gateway is always x.y.z.1
+        PREFIX=''${LOCAL_IP%.*}
+        GW="''${PREFIX}.1"
       fi
-      echo "openvpn-up: dev=$dev gw=$GW" | systemd-cat -t openvpn-cyberVPN
-      ip route add default via "$GW" dev "$dev" table 100
+      echo "openvpn-up: dev=$DEV local=$LOCAL_IP gw=$GW" | systemd-cat -t openvpn-cyberVPN
+      ip route add default via "$GW" dev "$DEV" table 100
       ip rule add uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100
     '';
 
     down = ''
       TRANS_UID=$(id -u transmission)
-      ip rule del uidrange $TRANS_UID-$TRANS_UID lookup 100 priority 100 || true
+      ip rule del uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100 || true
       ip route flush table 100 || true
     '';
 
