@@ -40,12 +40,13 @@ in
       fi
       echo "openvpn-up: dev=$DEV local=$LOCAL_IP gw=$GW" | systemd-cat -t openvpn-cyberVPN
       ip route add default via "$GW" dev "$DEV" table 100
-      ip rule add uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100
+      # Route by fwmark instead of UID so only marked (new outbound) packets
+      # use the VPN table — reply packets are not marked and use main table.
+      ip rule add fwmark 0x9091 lookup 100 priority 100
     '';
 
     down = ''
-      TRANS_UID=$(id -u transmission)
-      ip rule del uidrange "$TRANS_UID"-"$TRANS_UID" lookup 100 priority 100 || true
+      ip rule del fwmark 0x9091 lookup 100 priority 100 || true
       ip route flush table 100 || true
     '';
 
@@ -81,26 +82,27 @@ in
     '';
   };
 
-  # Kill switch via iptables: Transmission's internet traffic must go via tun0.
-  # Allow loopback (Sonarr/Radarr local API), tailscale0 (remote web UI),
-  # and any LAN interface (local web UI) — but block everything else so
-  # Transmission cannot leak to the internet if the VPN drops.
+  # Mark new outbound connections from Transmission so they use the VPN routing table.
+  # Reply packets are not marked and use the main table, so the web UI works.
+  # The kill switch (REJECT) still applies to all non-VPN, non-local internet traffic.
   networking.firewall.extraCommands = ''
+    iptables -t mangle -A OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091
     iptables -A OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT
-    iptables -A OUTPUT -m owner --uid-owner transmission -o tailscale0  -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner transmission -d 100.64.0.0/10 -j ACCEPT
     iptables -A OUTPUT -m owner --uid-owner transmission                -j REJECT
   '';
   networking.firewall.extraStopCommands = ''
+    iptables -t mangle -D OUTPUT -m owner --uid-owner transmission -m conntrack --ctstate NEW -j MARK --set-mark 0x9091 || true
     iptables -D OUTPUT -m owner --uid-owner transmission -o lo          -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -o tun0        -j ACCEPT || true
-    iptables -D OUTPUT -m owner --uid-owner transmission -o tailscale0  -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 10.0.0.0/8  -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 172.16.0.0/12 -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission -d 192.168.0.0/16 -j ACCEPT || true
+    iptables -D OUTPUT -m owner --uid-owner transmission -d 100.64.0.0/10 -j ACCEPT || true
     iptables -D OUTPUT -m owner --uid-owner transmission                -j REJECT || true
   '';
 
