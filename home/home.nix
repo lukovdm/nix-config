@@ -56,6 +56,8 @@ in
     ./services
   ];
 
+  nixpkgs.config.android_sdk.accept_license = true;
+
   home = {
     username = "luko";
     homeDirectory = "/home/luko";
