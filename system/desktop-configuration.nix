@@ -99,7 +99,7 @@
   services.pcscd.enable = true;
 
   hardware.rtl-sdr.enable = true;
-  users.users.luko.extraGroups = [ "plugdev" ];
+  users.users.luko.extraGroups = [ "plugdev" "kvm" ];
 
   # Add fonts
   fonts = {
