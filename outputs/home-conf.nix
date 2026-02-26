@@ -14,6 +14,7 @@ let
     overlays = [
       overlay-unstable
       fishOverlay
+      (import ../overlays/android-studio.nix)
       (final: prev: {
         nwjs = prev.nwjs.overrideAttrs {
           version = "0.84.0";
