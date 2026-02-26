@@ -78,6 +78,7 @@ in
       gnucash
       prismlauncher
       tor-browser
+      zen-browser
       betaflight-configurator
       ffmpeg
 

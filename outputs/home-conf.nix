@@ -16,6 +16,7 @@ let
       fishOverlay
       (import ../overlays/android-studio.nix)
       (final: prev: {
+        zen-browser = inputs.zen-browser.packages.${system}.default;
         nwjs = prev.nwjs.overrideAttrs {
           version = "0.84.0";
           src = prev.fetchurl {
