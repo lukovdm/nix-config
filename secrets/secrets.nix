@@ -82,4 +82,11 @@ in
   # Copy from ~/Prj/vpns/cyberghost/luko_krypton_openvpn/client.key
   # Create it with: agenix -e secrets/cyberghost-client-key.age
   "cyberghost-client-key.age".publicKeys = [ krypton luko ];
+
+  # AIMC API keys (krypton)
+  # The secret file must contain env-style lines, e.g.:
+  #   MISTRAL_API_KEY=sk-...
+  #   ANTHROPIC_API_KEY=sk-ant-...
+  # Create it with: nix run github:ryantm/agenix -- -e secrets/aimc-env.age
+  "aimc-env.age".publicKeys = [ krypton luko ];
 }

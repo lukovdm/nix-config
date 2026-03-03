@@ -17,6 +17,7 @@
     ./modules/vpn.nix
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
+    ./modules/aimc.nix
   ];
 
   # System version, do not update here!

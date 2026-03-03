@@ -45,6 +45,7 @@ in
     modules = [
       inputs.agenix.nixosModules.default
       inputs.bbg-mm.nixosModules.bgg-mm
+      inputs.aimc.nixosModules.default
       ../system/server-configuration.nix
       ../system/hardware-configurations/krypton.nix
     ];
