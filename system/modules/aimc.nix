@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, inputs, pkgs, ... }:
 let
   tsDomain  = "krypton.ide-turtle.ts.net";
   # Tailscale serve does TLS termination and proxies to this local port.
@@ -18,13 +18,6 @@ in
     listenPort      = nginxPort;
     environmentFile = config.age.secrets.aimc-env.path;
     # No ssl.* — tailscale serve handles TLS
-  };
-
-  # Restrict nginx to localhost only; tailscale serve fronts it with HTTPS.
-  services.nginx.virtualHosts."aimc" = {
-    listen = lib.mkForce [{ addr = "127.0.0.1"; port = nginxPort; }];
-    forceSSL   = lib.mkForce false;
-    enableACME = lib.mkForce false;
   };
 
   # Configure tailscale serve to proxy port 443 on the tailnet → nginx.

@@ -35,11 +35,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1772525606,
-        "narHash": "sha256-W5t/vAtb7WURYJGFFkMIWu5Z666yHMZD19bNHBsPltU=",
+        "lastModified": 1772526588,
+        "narHash": "sha256-NSYyI5spmCfEBlSifmujh9Czn6WP12dZYbeY7tk74wU=",
         "owner": "lukovdm",
         "repo": "AIMC",
-        "rev": "df37379102c926c73ffa20f9f01b95156c4e9449",
+        "rev": "52333293e7de5f0bd0117a6e9b5d2a5026e4671e",
         "type": "github"
       },
       "original": {
