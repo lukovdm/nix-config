@@ -29,7 +29,7 @@ in
     serviceConfig = {
       Type      = "oneshot";
       ExecStart = pkgs.writeShellScript "tailscale-serve-setup" ''
-        ${pkgs.tailscale}/bin/tailscale serve --set-path / http://localhost:${toString nginxPort}
+        ${pkgs.tailscale}/bin/tailscale serve --bg --set-path / http://localhost:${toString nginxPort}
       '';
     };
   };
