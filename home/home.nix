@@ -117,6 +117,7 @@ in
       github-copilot-cli
       claude-code
       android-studio
+      python3
 
       # KDE stuff
       kdePackages.kate
