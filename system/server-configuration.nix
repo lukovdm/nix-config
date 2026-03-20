@@ -18,6 +18,7 @@
     # ./modules/nginx.nix
     # ./modules/mattermost.nix
     ./modules/aimc.nix
+    ./modules/borg-server.nix
   ];
 
   # System version, do not update here!

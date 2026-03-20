@@ -4,10 +4,9 @@
     paths = "/home/luko";
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_rsa";
-    repo = "Luko@nas-opdeboot:~/Barium";
+    repo = "luko@krypton:/media/backup/barium";
     compression = "auto,zstd";
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
-    extraArgs = "--remote-path /usr/local/bin/borg";
     startAt = "daily";
     exclude = [
       ".cache"
