@@ -115,6 +115,7 @@ in
       autokey
       pkgs.unstable.netlogo
       github-copilot-cli
+      claude-code
       android-studio
 
       # KDE stuff
