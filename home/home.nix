@@ -115,7 +115,7 @@ in
       autokey
       pkgs.unstable.netlogo
       github-copilot-cli
-      claude-code
+      unstable.claude-code
       android-studio
       python3
 
