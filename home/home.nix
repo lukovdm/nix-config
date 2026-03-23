@@ -81,6 +81,7 @@ in
       zen-browser
       betaflight-configurator
       ffmpeg
+      moonlight-qt
 
       # Socials
       zoom-us
