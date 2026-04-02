@@ -79,6 +79,9 @@
     lidSwitchDocked = "ignore";
   };
 
+  # Disable power-profiles-daemon (enabled by Plasma by default, conflicts with TLP)
+  services.power-profiles-daemon.enable = false;
+
   # TLP for advanced laptop power management
   services.tlp = {
     enable = true;
