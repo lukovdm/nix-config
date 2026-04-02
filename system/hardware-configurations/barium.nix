@@ -104,6 +104,7 @@
 
   # Framework releases frequent BIOS/firmware updates via LVFS that fix sleep/power bugs
   services.fwupd.enable = true;
+  services.fwupd.uefiCapsuleSettings.EspLocation = "/boot/EFI";
 
   # high-resolution display
   #find new setting to fix this
