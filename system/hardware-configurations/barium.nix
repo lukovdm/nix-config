@@ -104,7 +104,7 @@
 
   # Framework releases frequent BIOS/firmware updates via LVFS that fix sleep/power bugs
   services.fwupd.enable = true;
-  services.fwupd.daemonSettings.EspLocation = "/boot/EFI";
+  services.fwupd.daemonSettings.EspLocation = "/boot";
   services.udisks2.enable = true;
 
   # high-resolution display
