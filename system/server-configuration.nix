@@ -19,6 +19,7 @@
     # ./modules/mattermost.nix
     ./modules/aimc.nix
     ./modules/borg-server.nix
+    # ./modules/pocketid.nix
   ];
 
   # System version, do not update here!

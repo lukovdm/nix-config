@@ -89,7 +89,7 @@ in
       mattermost-desktop
       thunderbird
       discord
-      signal-desktop
+      unstable.signal-desktop
 
       # Creative stuff
       libreoffice

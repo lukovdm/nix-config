@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "framework_laptop" ];
   boot.extraModulePackages = [ ];
 
   boot.extraModprobeConfig = ''
@@ -19,7 +19,7 @@
   '';
 
   boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "5.16") (lib.mkDefault pkgs.linuxPackages_latest);
-  boot.kernelParams = [ "mem_sleep_default=deep" "nvme.noacpi=1" ];
+  boot.kernelParams = [ "mem_sleep_default=deep" "nvme.noacpi=1" "i915.enable_psr=1" ];
 
   services.udev.extraRules = ''
     SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
@@ -68,8 +68,39 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.enable = true;
+  # cpuFreqGovernor is managed by TLP below
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Suspend on lid close, even when on AC power
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+    lidSwitchDocked = "ignore";
+  };
+
+  # TLP for advanced laptop power management
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      # Keep WiFi off when on battery to save power during suspend
+      WIFI_PWR_ON_BAT = "on";
+      WIFI_PWR_ON_AC = "off";
+      # Disable wake-on-LAN
+      WOL_DISABLE = "Y";
+      # Battery charge thresholds (Framework 13 supports this via framework_laptop module)
+      # Keeps battery between 20-80% to extend long-term battery lifespan
+      START_CHARGE_THRESH_BAT0 = 20;
+      # STOP_CHARGE_THRESH_BAT0 = 80;
+    };
+  };
+
+  # Framework releases frequent BIOS/firmware updates via LVFS that fix sleep/power bugs
+  services.fwupd.enable = true;
 
   # high-resolution display
   #find new setting to fix this
