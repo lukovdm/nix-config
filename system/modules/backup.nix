@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   services.borgbackup.jobs.home = {
     paths = "/home/luko";
@@ -33,6 +33,6 @@
   };
 
   systemd.timers."borgbackup-job-home" = {
-    timerConfig.Persistent = true;
+    timerConfig.Persistent = lib.mkForce true;
   };
 }
