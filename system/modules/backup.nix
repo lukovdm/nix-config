@@ -4,7 +4,7 @@
     paths = "/home/luko";
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_rsa";
-    repo = "luko@krypton:/media/backup/barium";
+    repo = "borg@krypton:/bigmedia/backup/barium";
     compression = "auto,zstd";
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
     startAt = "daily";
@@ -32,7 +32,7 @@
     };
   };
 
-  systemd.timers.borgbackup-job- = {
+  systemd.timers."borgbackup-job-home" = {
     timerConfig.Persistent = true;
   };
 }
