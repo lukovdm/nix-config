@@ -5,9 +5,16 @@ let
   nginxPort = 8444;
 in
 {
+  users.users.aimc = {
+    isSystemUser = true;
+    group = "aimc";
+  };
+  users.groups.aimc = {};
+
   age.secrets.aimc-env = {
     file = ../../secrets/aimc-env.age;
     owner = "aimc";
+    group = "aimc";
   };
 
   services.aimc = {
