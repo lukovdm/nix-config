@@ -56,8 +56,9 @@ in
     ./services
   ];
 
-  nixpkgs.config.android_sdk.accept_license = true;
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs config is inherited from system via home-manager.useGlobalPkgs
+  # nixpkgs.config.allowUnfree = true;  # set at system level
+  # nixpkgs.config.android_sdk.accept_license = true;  # set at system level
 
   home = {
     username = "luko";

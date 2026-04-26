@@ -25,6 +25,7 @@ let
     inherit system;
 
     config.allowUnfree = true;
+    config.android_sdk.accept_license = true;
     config.permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
       "aspnetcore-runtime-6.0.36"

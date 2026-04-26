@@ -26,8 +26,7 @@
   # Stylix theming
   stylix = {
     enable = true;
-    # Replace with your own wallpaper file
-    image = ../../wallpaper.png;
+    image = ../../wallpaper.jpg;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     opacity = {

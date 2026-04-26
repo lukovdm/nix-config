@@ -1,56 +1,6 @@
 { pkgs, lib, config, ... }:
 let
   lock = "${lib.getExe pkgs.swaylock}";
-
-  # Raw KDL config for blur (niri-flake doesn't have structured settings for this yet)
-  blurConfig = pkgs.writeText "niri-blur.kdl" ''
-    blur {
-      passes 3
-      offset 3
-      noise 0.02
-      saturation 1.5
-    }
-
-    // Background blur on transparent windows
-    window-rule {
-      match is-floating=false
-      background-effect {
-        blur true
-        xray false
-        noise 0.02
-        saturation 1.5
-      }
-    }
-
-    // Blur behind waybar
-    layer-rule {
-      match namespace="^waybar$"
-      background-effect {
-        blur true
-        xray false
-        noise 0.01
-        saturation 1.0
-      }
-    }
-
-    // Blur behind notifications
-    layer-rule {
-      match namespace="^notifications$"
-      background-effect {
-        blur true
-        xray false
-      }
-    }
-
-    // Blur behind fuzzel
-    layer-rule {
-      match namespace="^launcher$"
-      background-effect {
-        blur true
-        xray false
-      }
-    }
-  '';
 in
 {
   # Stylix theming is configured in system/modules/desktop-niri.nix
@@ -78,9 +28,6 @@ in
 
   # Niri compositor config
   programs.niri.settings = {
-    # Include raw KDL for blur (until niri-flake adds structured blur settings)
-    includes = lib.mkAfter [ blurConfig ];
-
     # Spawn at startup
     spawn-at-startup = [
       { command = [ "waybar" ]; }
