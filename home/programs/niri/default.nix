@@ -53,28 +53,8 @@ let
   '';
 in
 {
-  # Stylix theming (standalone home-manager needs its own config)
-  stylix = {
-    enable = true;
-    image = ../../wallpaper.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-    opacity = {
-      terminal = 0.9;
-      popups = 0.9;
-    };
-    fonts = {
-      monospace = { package = pkgs.nerd-fonts.fira-code; name = "FiraCode Nerd Font"; };
-      sansSerif = { package = pkgs.dejavu_fonts; name = "DejaVu Sans"; };
-      serif = { package = pkgs.dejavu_fonts; name = "DejaVu Serif"; };
-      emoji = { package = pkgs.noto-fonts-emoji; name = "Noto Color Emoji"; };
-    };
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 24;
-    };
-  };
+  # Stylix theming is configured in system/modules/desktop-niri.nix
+  # and auto-propagates to home-manager via the NixOS module integration.
 
   home.packages = with pkgs; [
     # Screenshots

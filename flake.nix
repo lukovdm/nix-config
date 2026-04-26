@@ -62,12 +62,6 @@
       };
     in
     {
-      homeConfigurations = (
-        import ./outputs/home-conf.nix {
-          inherit inputs system overlay-unstable;
-        }
-      );
-
       nixosConfigurations = (
         import ./outputs/system-conf.nix {
           inherit inputs system overlay-unstable;

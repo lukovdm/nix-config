@@ -30,6 +30,10 @@
     image = ../../wallpaper.png;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    opacity = {
+      terminal = 0.9;
+      popups = 0.9;
+    };
     fonts = {
       monospace = { package = pkgs.nerd-fonts.fira-code; name = "FiraCode Nerd Font"; };
       sansSerif = { package = pkgs.dejavu_fonts; name = "DejaVu Sans"; };
