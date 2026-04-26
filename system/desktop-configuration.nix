@@ -8,26 +8,9 @@
     ./modules/networking.nix
     ./modules/common.nix
     ./modules/backup.nix
+    ./modules/desktop-kde.nix
+    ./modules/desktop-niri.nix
   ];
-
-  # Display manager
-  services.xserver = {
-    enable = true;
-  };
-
-  services.desktopManager = {
-    plasma6 = {
-      enable = true;
-      enableQt5Integration = true;
-    };
-  };
-
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-  };
 
   hardware.graphics.enable = true;
 
@@ -43,18 +26,6 @@
   programs.firefox = {
     enable = true;
   };
-
-  # Installed system packages
-  environment.systemPackages = with pkgs; [
-    xdg-desktop-portal
-    xorg.xkill
-
-    kdePackages.kdeconnect-kde
-    kdePackages.krunner
-    kdePackages.sddm-kcm
-    kdePackages.ark
-    kdePackages.xdg-desktop-portal-kde
-  ];
 
   # Printing
   services.printing = {

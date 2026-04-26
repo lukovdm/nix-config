@@ -37,6 +37,14 @@
       url = "github:lukovdm/AIMC";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+    };
   };
 
   outputs = inputs:

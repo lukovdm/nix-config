@@ -2,7 +2,9 @@
 {
   imports = [
     ./fish
-    ./plasma.nix
+    # Desktop environments (both installed, pick session at SDDM login)
+    ./kde
+    ./niri
   ];
 
   programs.fzf = {

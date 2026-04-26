@@ -33,7 +33,11 @@ let
       inherit pkgs;
       modules = [
         ../home/home.nix
+        # Desktop environments (both installed, pick session at SDDM login)
         inputs.plasma-manager.homeModules.plasma-manager
+        inputs.niri.homeModules.niri
+        inputs.niri.homeModules.stylix
+        inputs.stylix.homeManagerModules.stylix
       ];
     }
   );

@@ -120,12 +120,6 @@ in
       android-studio
       python3
 
-      # KDE stuff
-      kdePackages.kate
-      kdePackages.kdenlive
-      kdePackages.konsole
-      kdePackages.yakuake
-
       # Terminal stuff
       fishPlugins.pisces
       fishPlugins.foreign-env

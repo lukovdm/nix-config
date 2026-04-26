@@ -23,6 +23,8 @@ in
     specialArgs = { inherit inputs; };
     modules = [
       inputs.agenix.nixosModules.default
+      inputs.niri.nixosModules.niri
+      inputs.stylix.nixosModules.stylix
       ../system/desktop-configuration.nix
       ../system/hardware-configurations/barium.nix
     ];
