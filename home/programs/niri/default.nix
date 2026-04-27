@@ -3,6 +3,9 @@ let
   lock = "${lib.getExe pkgs.swaylock}";
 in
 {
+  # Use nixpkgs niri package (niri-flake's package crashes in sandbox during build)
+  programs.niri.package = pkgs.niri;
+
   # Stylix theming is configured in system/modules/desktop-niri.nix
   # and auto-propagates to home-manager via the NixOS module integration.
 
@@ -22,6 +25,9 @@ in
     networkmanagerapplet
     swaybg
 
+    # X11 compatibility for apps like Steam, Obsidian
+    xwayland-satellite
+
     # File manager
     nautilus
   ];
@@ -33,6 +39,7 @@ in
       { command = [ "waybar" ]; }
       { command = [ "mako" ]; }
       { command = [ "nm-applet" "--indicator" ]; }
+      { command = [ "${lib.getExe pkgs.xwayland-satellite}" ]; }
       { command = [ "${lib.getExe' pkgs.wl-clipboard "wl-paste"}" "--type" "text" "--watch" "${lib.getExe pkgs.cliphist}" "store" ]; }
       { command = [ "swayidle" "-w"
         "timeout" "300" "${lock} -f"
@@ -41,6 +48,17 @@ in
       ]; }
     ];
 
+    # Set DISPLAY so X11 apps (Steam, Obsidian, etc.) can connect to xwayland-satellite
+    environment = {
+      DISPLAY = ":0";
+    };
+
+    outputs = {
+      "eDP-1" = {
+        scale = 1.25;
+      };
+    };
+
     # Input config
     input = {
       keyboard.xkb = {
@@ -48,7 +66,7 @@ in
       };
       touchpad = {
         tap = true;
-        natural-scroll = true;
+        natural-scroll = false;
         dwt = true; # disable while typing
       };
       mouse = {

@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    # Use nixpkgs niri instead of niri-flake's package —
+    # niri-flake's postInstall runs the binary in the sandbox (no display) which crashes.
+    package = pkgs.niri;
+  };
 
   # Login manager — SDDM works with niri too, easy to switch back to KDE
   services.displayManager.sddm = {

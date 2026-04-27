@@ -62,6 +62,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "hm-backup";
         home-manager.users.luko = import ../home/home.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
