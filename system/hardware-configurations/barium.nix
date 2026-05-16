@@ -144,7 +144,19 @@
 
 
   services.libinput.enable = true;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    # nixpkgs builds bluez with --disable-experimental by default, which
+    # compiles out the BAP plugin and ISO socket support. Override to get
+    # LE Audio / LC3.
+    package = pkgs.bluez.override { enableExperimental = true; };
+    powerOnBoot = true;
+    settings.General = {
+      Experimental = true;
+      KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
+      ControllerMode = "dual";
+    };
+  };
 
   hardware.graphics = {
     enable = true;
