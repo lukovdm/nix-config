@@ -42,7 +42,7 @@
       monospace = { package = pkgs.nerd-fonts.fira-code; name = "FiraCode Nerd Font"; };
       sansSerif = { package = pkgs.dejavu_fonts; name = "DejaVu Sans"; };
       serif = { package = pkgs.dejavu_fonts; name = "DejaVu Serif"; };
-      emoji = { package = pkgs.noto-fonts-emoji; name = "Noto Color Emoji"; };
+      emoji = { package = pkgs.noto-fonts-color-emoji; name = "Noto Color Emoji"; };
     };
     cursor = {
       package = pkgs.bibata-cursors;

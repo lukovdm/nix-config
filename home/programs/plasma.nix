@@ -1,6 +1,19 @@
 {
   programs.plasma = {
     enable = true;
+    # kuriikwsfilterrc is owned by plasma-manager's webSearchKeywords module.
+    searchPlugins.webSearchKeywords = {
+      enable = true;
+      default = "";
+      delimiter = ":";
+      preferred = [
+        "google"
+        "wikit"
+        "wikipedia"
+        "duckduckgo"
+      ];
+      usePreferredOnly = false;
+    };
     shortcuts = {
       ActivityManager.switch-to-activity-64ec2830-de81-421a-91de-91b36cd82396 = [ ];
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (Dvorak, intl., with dead keys)" = [ ];
@@ -1080,11 +1093,6 @@
       kservicemenurc.Show.slideshowfileitemaction = true;
       kservicemenurc.Show.tagsfileitemaction = true;
       ksmserverrc.General.loginMode = "emptySession";
-      kuriikwsfilterrc.General.DefaultWebShortcut = "";
-      kuriikwsfilterrc.General.EnableWebShortcuts = true;
-      kuriikwsfilterrc.General.KeywordDelimiter = ":";
-      kuriikwsfilterrc.General.PreferredWebShortcuts = "google,wikit,wikipedia,duckduckgo";
-      kuriikwsfilterrc.General.UsePreferredWebShortcutsOnly = false;
       kwalletrc."Auto Allow".kdewallet = "kded5,Slack,KDE System,Chromium,discord,WebStorm 2023.2,Code,HomeAssistant,kwalletmanager5,kded6,kwalletmanager,nwjs,Signal,xdg-desktop-portal";
       kwalletrc.Wallet."Close When Idle" = false;
       kwalletrc.Wallet."Close on Screensaver" = false;

@@ -12,7 +12,7 @@ let
     config.permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
       "aspnetcore-runtime-6.0.36"
-      "broadcom-sta-6.30.223.271-59-6.12.63"
+      "broadcom-sta-6.30.223.271-59-6.18.49"
     ];
 
     overlays = [
@@ -29,7 +29,7 @@ let
     config.permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
       "aspnetcore-runtime-6.0.36"
-      "broadcom-sta-6.30.223.271-59-6.12.63"
+      "broadcom-sta-6.30.223.271-59-6.18.49"
     ];
 
     overlays = [

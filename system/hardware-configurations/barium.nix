@@ -73,10 +73,10 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # Suspend on lid close, even when on AC power
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "suspend";
-    lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "ignore";
   };
 
   # Disable power-profiles-daemon (enabled by Plasma by default, conflicts with TLP)
@@ -146,10 +146,10 @@
   services.libinput.enable = true;
   hardware.bluetooth = {
     enable = true;
-    # nixpkgs-25.05 ships bluez 5.80; LE Audio handling improved
-    # substantially in 5.84+ (BAP SetConfiguration fix, per-device LE
-    # toggle equivalent). Pull bluez from nixpkgs-unstable and turn on
-    # the experimental build that includes the BAP plugin.
+    # LE Audio handling improved substantially in bluez 5.84+ (BAP
+    # SetConfiguration fix, per-device LE toggle equivalent). nixpkgs 26.05
+    # now ships 5.86, so this could fall back to pkgs.bluez; kept on
+    # unstable for now. The experimental build is what carries the BAP plugin.
     package = pkgs.unstable.bluez.override { enableExperimental = true; };
     powerOnBoot = true;
     settings.General = {
@@ -163,8 +163,8 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime
     ];

@@ -14,20 +14,22 @@
 
   programs.git = {
     enable = true;
-    userName = "Luko van der Maas";
-    userEmail = "me@luko.dev";
-    extraConfig = {
+    settings = {
+      user.name = "Luko van der Maas";
+      user.email = "me@luko.dev";
       init.defaultBranch = "main";
     };
   };
 
   programs.gh = {
     enable = true;
-    extensions = [ pkgs.gh-copilot ];
   };
 
   programs.firefox = {
     enable = true;
+    # Keep the pre-26.05 profile location; the new default is under
+    # $XDG_CONFIG_HOME and would need ~/.mozilla/firefox moved by hand.
+    configPath = ".mozilla/firefox";
   };
 
   programs.vscode = {

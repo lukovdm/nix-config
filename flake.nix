@@ -2,9 +2,9 @@
   description = "Luko's system configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     fish-bobthefish-theme = {
@@ -43,7 +43,7 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -57,7 +57,7 @@
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
             "aspnetcore-runtime-wrapped-6.0.36"
-            "broadcom-sta-6.30.223.271-59-6.12.63"
+            "broadcom-sta-6.30.223.271-59-6.18.49"
           ];
         };
       };

@@ -1,6 +1,5 @@
 final: prev: {
-  # Android Studio Panda 1 | 2025.3.1 (stable)
-  # Not yet in nixpkgs stable; override until the package is updated.
+  # Upstream's android-studio, with xdg-open routed through the portal.
   android-studio =
     let
       # Wrap xdg-open to use xdg-desktop-portal via gdbus instead of
@@ -19,16 +18,7 @@ final: prev: {
         multiPkgs = pkgs: (args.multiPkgs or (_: []) pkgs) ++ [ xdgOpenPortal ];
       });
     in
-    prev.callPackage
-      (import (prev.path + "/pkgs/applications/editors/android-studio/common.nix") {
-        channel = "stable";
-        pname = "android-studio";
-        version = "2025.3.1.2";
-        sha256Hash = "sha256-kgYPwMF/CypkCq4w/y+HnraNdPNHf53198x35S0i7OA=";
-      })
-      {
-        fontsConf = prev.makeFontsConf { fontDirectories = [ ]; };
-        buildFHSEnv = buildFHSEnvWithPortal;
-        tiling_wm = false;
-      };
+    prev.android-studio.override {
+      buildFHSEnv = buildFHSEnvWithPortal;
+    };
 }

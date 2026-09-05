@@ -18,10 +18,8 @@
 
     openwakeword = {
       enable = true;
-      preloadModels = [
-        "hey_jarvis"
-        "hey_mycroft"
-      ];
+      # preloadModels was removed in wyoming-openwakeword 2.0; all bundled
+      # wake words are available without preloading.
       uri = "tcp://0.0.0.0:10400";
     };
   };

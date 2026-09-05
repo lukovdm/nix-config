@@ -111,8 +111,7 @@ in
       pycharm
       webstorm
       clion
-      nodePackages.npm
-      nodejs
+      nodejs # includes npm
       tex
       autokey
       pkgs.unstable.netlogo

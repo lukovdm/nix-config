@@ -36,8 +36,9 @@
     } ];
   };
 
-  fileSystems."/var/lib/private/photoprism" = { 
+  fileSystems."/var/lib/private/photoprism" = {
     device = "/media/photoprism";
+    fsType = "none";
     options = [ "bind" ];
   };
 }

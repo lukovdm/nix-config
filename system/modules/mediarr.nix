@@ -39,6 +39,9 @@
   };
   services.transmission = {
     enable = true;
+    # transmission_3 was removed in nixpkgs 26.05; 4.x reads the 3.x
+    # config/state dir but the upgrade is one-way (see NixOS 24.11 notes).
+    package = pkgs.transmission_4;
     group = "media";
     openFirewall = true;
     openRPCPort = true;
