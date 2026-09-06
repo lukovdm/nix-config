@@ -54,7 +54,7 @@
     efiSupport = true;
     enableCryptodisk = true;
   };
-  boot.loader.efi.efiSysMountPoint = "/boot/EFI";
+  boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.acpilight.enable = lib.mkDefault true;
