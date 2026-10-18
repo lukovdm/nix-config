@@ -58,6 +58,8 @@
           config.permittedInsecurePackages = [
             "aspnetcore-runtime-wrapped-6.0.36"
             "broadcom-sta-6.30.223.271-59-6.18.49"
+            # zotero 10 bundles Firefox ESR 140, EOL since 2026-10-13.
+            "firefox-esr-140-bin-unwrapped-140.17.0esr"
           ];
         };
       };
