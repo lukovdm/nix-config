@@ -36,6 +36,7 @@ let
       overlay-unstable
       fishOverlay
       (import ../overlays/android-studio.nix)
+      (import ../overlays/procgen.nix)
       (final: prev: {
         zen-browser = inputs.zen-browser.packages.${system}.default;
         nwjs = prev.nwjs.overrideAttrs {

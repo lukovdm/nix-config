@@ -102,6 +102,7 @@ in
       audacity
       blender
       darktable
+      procgen
       obsidian
       sdrpp
 
