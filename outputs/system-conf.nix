@@ -42,7 +42,19 @@ let
       (import ../overlays/android-studio.nix)
       (import ../overlays/procgen.nix)
       (final: prev: {
-        zen-browser = inputs.zen-browser.packages.${system}.default;
+        # zen-browser upstream re-published the 1.23.3b release assets about
+        # 13h after zen-browser-flake's bot pinned them, so the flake's hash
+        # no longer matches the tarball that URL now serves. Drop this
+        # override once the flake moves to a newer version.
+        zen-browser =
+          let
+            zen = inputs.zen-browser.packages.${system};
+          in
+          zen.default.override {
+            zen-browser-unwrapped = zen.zen-browser-unwrapped.override {
+              hash = "sha256-uyBF0+IWVNQP6EElAJLurf0sH8gx7vtQkiJ3PIvcoUk=";
+            };
+          };
         nwjs = prev.nwjs.overrideAttrs {
           version = "0.84.0";
           src = prev.fetchurl {
