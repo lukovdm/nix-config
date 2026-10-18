@@ -94,12 +94,12 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    xorg.libICE
+    libice
     icu
     libz
     fontconfig
-    xorg.libX11
-    xorg.libSM
+    libx11
+    libsm
   ];
 
   hardware.keyboard.qmk.enable = true;

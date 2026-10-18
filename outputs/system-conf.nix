@@ -5,15 +5,23 @@ let
     inherit fish-bobthefish-theme;
   };
 
+  # Matched by name, not "<name>-<version>": broadcom-sta (krypton's wifi
+  # driver) carries the kernel release in its version, so a pinned entry
+  # breaks at every kernel bump. Defining this predicate replaces
+  # `permittedInsecurePackages` entirely.
+  allowInsecurePredicate =
+    pkg:
+    builtins.elem (nixpkgs.lib.getName pkg) [
+      "broadcom-sta"
+      "dotnet-sdk"
+      "aspnetcore-runtime"
+    ];
+
   pkgs = import nixpkgs {
     inherit system;
 
     config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "dotnet-sdk-6.0.428"
-      "aspnetcore-runtime-6.0.36"
-      "broadcom-sta-6.30.223.271-59-6.18.49"
-    ];
+    config.allowInsecurePredicate = allowInsecurePredicate;
 
     overlays = [
       overlay-unstable
@@ -26,11 +34,7 @@ let
 
     config.allowUnfree = true;
     config.android_sdk.accept_license = true;
-    config.permittedInsecurePackages = [
-      "dotnet-sdk-6.0.428"
-      "aspnetcore-runtime-6.0.36"
-      "broadcom-sta-6.30.223.271-59-6.18.49"
-    ];
+    config.allowInsecurePredicate = allowInsecurePredicate;
 
     overlays = [
       overlay-unstable

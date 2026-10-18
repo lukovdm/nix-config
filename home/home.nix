@@ -1,9 +1,8 @@
 { config, pkgs, lib, ... }:
 let
-  tex = (pkgs.unstable.texlive.combine {
-    inherit (pkgs.unstable.texlive) scheme-full
-      ;
-  });
+  # texlive.combine is deprecated (removed in 27.05); texliveFull is the
+  # scheme-full environment.
+  tex = pkgs.unstable.texliveFull;
 
   pycharm = pkgs.unstable.jetbrains.pycharm.overrideAttrs
     (attrs: {

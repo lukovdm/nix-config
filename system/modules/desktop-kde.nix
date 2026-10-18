@@ -15,7 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal
-    xorg.xkill
+    xkill
 
     kdePackages.kdeconnect-kde
     kdePackages.krunner

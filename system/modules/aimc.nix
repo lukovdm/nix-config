@@ -19,8 +19,8 @@ in
 
   services.aimc = {
     enable = true;
-    package         = inputs.aimc.packages.${pkgs.system}.aimc;
-    frontendPackage = inputs.aimc.packages.${pkgs.system}.aimc-frontend;
+    package         = inputs.aimc.packages.${pkgs.stdenv.hostPlatform.system}.aimc;
+    frontendPackage = inputs.aimc.packages.${pkgs.stdenv.hostPlatform.system}.aimc-frontend;
     hostname        = tsDomain;
     listenPort      = nginxPort;
     environmentFile = config.age.secrets.aimc-env.path;
