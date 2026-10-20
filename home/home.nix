@@ -97,7 +97,7 @@ in
       inkscape
       openscad
       pkgs.unstable.orca-slicer
-      pkgs.unstable.bambu-studio
+      # pkgs.unstable.bambu-studio
       audacity
       blender
       darktable

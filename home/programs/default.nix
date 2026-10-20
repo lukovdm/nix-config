@@ -2,9 +2,8 @@
 {
   imports = [
     ./fish
-    # Desktop environments (both installed, pick session at SDDM login)
+    # Desktop environment
     ./kde
-    ./niri
   ];
 
   programs.fzf = {

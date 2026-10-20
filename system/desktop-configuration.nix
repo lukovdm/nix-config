@@ -9,7 +9,7 @@
     ./modules/common.nix
     ./modules/backup.nix
     ./modules/desktop-kde.nix
-    ./modules/desktop-niri.nix
+    ./modules/stylix.nix
   ];
 
   hardware.graphics.enable = true;
@@ -21,6 +21,19 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    # LE Audio (LC3 over BAP/CIS). Requires the experimental bluez build in
+    # hardware-configurations/barium.nix. Roles are pinned explicitly so BAP
+    # stays enabled alongside A2DP/HFP.
+    wireplumber.extraConfig."10-bluez-le-audio" = {
+      "monitor.bluez.properties" = {
+        "bluez5.roles" = [
+          "a2dp_sink" "a2dp_source"
+          "bap_sink" "bap_source"
+          "hfp_hf" "hfp_ag"
+        ];
+        "bluez5.enable-hw-volume" = true;
+      };
+    };
   };
 
   programs.firefox = {
