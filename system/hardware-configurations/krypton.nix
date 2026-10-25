@@ -47,7 +47,7 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580; # GTX 970 (Maxwell) was dropped in 595+
   hardware.nvidia.open = false;
   hardware.graphics = {
     enable = true;

@@ -3,8 +3,13 @@
   services.borgbackup.jobs.home = {
     paths = "/home/luko";
     encryption.mode = "none";
-    environment.BORG_RSH = "ssh -i /home/luko/.ssh/id_rsa";
-    repo = "borg@krypton:/bigmedia/backup/barium";
+    environment = {
+      # Krypton's Tailscale IP, so backups work from any network.
+      # HostKeyAlias reuses the existing known_hosts entry for "krypton".
+      BORG_RSH = "ssh -i /home/luko/.ssh/id_rsa -o HostKeyAlias=krypton";
+      BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
+    };
+    repo = "borg@100.112.176.84:/bigmedia/backup/barium";
     compression = "auto,zstd";
     extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
     startAt = "daily";
