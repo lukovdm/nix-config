@@ -101,6 +101,8 @@ in
       audacity
       blender
       darktable
+      darktable-mcp
+      darktable-master
       procgen
       obsidian
       sdrpp

@@ -155,6 +155,10 @@
     settings.General = {
       Experimental = true;
       KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
+      # Dual-mode LE Audio headsets (e.g. WH-1000XM6) get bonded over BR/EDR
+      # only in "dual" mode. To get LE keys: temporarily set "le", run
+      # `sudo systemctl restart bluetooth` (switch doesn't restart it), pair,
+      # then revert. The LE bond survives switching back to "dual".
       ControllerMode = "dual";
     };
   };

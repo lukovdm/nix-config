@@ -41,6 +41,7 @@ let
       fishOverlay
       (import ../overlays/android-studio.nix)
       (import ../overlays/procgen.nix)
+      (import ../overlays/darktable-mcp.nix)
       (final: prev: {
         # zen-browser upstream re-published the 1.23.3b release assets about
         # 13h after zen-browser-flake's bot pinned them, so the flake's hash
@@ -73,7 +74,6 @@ in
     specialArgs = { inherit inputs; };
     modules = [
       inputs.agenix.nixosModules.default
-      inputs.niri.nixosModules.niri
       inputs.stylix.nixosModules.stylix
       inputs.home-manager.nixosModules.home-manager
       {
@@ -83,7 +83,7 @@ in
         home-manager.users.luko = import ../home/home.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
-          # niri + stylix home modules are auto-imported by their NixOS modules
+          # stylix home module is auto-imported by its NixOS module
         ];
       }
       ../system/desktop-configuration.nix
